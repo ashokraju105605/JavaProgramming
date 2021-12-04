@@ -11,7 +11,7 @@ public class MedianStream {
     public static void main(String[] args) {
         System.out.println("Jai Shree Ram");
 
-        int A[] = { 5, 15, 1, 3, 2, 8, 7, 9, 10, 6, 11, 4 };
+        // int A[] = { 5, 15, 1, 3, 2, 8, 7, 9, 10, 6, 11, 4 };
 
         int[] arr = new int[] { 5, 15, 10, 20, 3 };
         printMedian(arr);
