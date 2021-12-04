@@ -1,13 +1,15 @@
+package Usage;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Test {
+public class MinCostToHireWorkers {
     public static void main(String[] args) {
         System.out.println("Jai Shree Ram");
-        int[] quality = {10,20,5};
-        int[] wage = {70,50,30};
+        int[] quality = { 10, 20, 5 };
+        int[] wage = { 70, 50, 30 };
         int K = 2;
         Solution s = new Solution();
         s.mincostToHireWorkers(quality, wage, K);

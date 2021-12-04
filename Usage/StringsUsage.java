@@ -1,3 +1,5 @@
+package Usage;
+
 public class StringsUsage {
     public static void main(String[] args) {
         String s = "Ashok".toUpperCase();

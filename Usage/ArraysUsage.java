@@ -1,3 +1,5 @@
+package Usage;
+
 import java.util.*;
 
 public class ArraysUsage {

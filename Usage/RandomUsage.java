@@ -1,3 +1,5 @@
+package Usage;
+
 import java.util.Random;
 
 public class RandomUsage {
