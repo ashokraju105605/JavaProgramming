@@ -2,6 +2,8 @@ package LearnBasics;
 
 import java.util.*;
 
+import javax.xml.transform.Source;
+
 public class QueueUsage {
     public static void main(String[] args)
     {
@@ -11,6 +13,7 @@ public class QueueUsage {
         pq.add("ashok");
         pq.add("raju");
         pq.add("ananya");
+        pq.offer("test");
 
         System.out.println(pq);
 
@@ -30,6 +33,7 @@ public class QueueUsage {
         System.out.println(pq.poll());
         System.out.println(pq.element());
         System.out.println(pq.offer("rama"));
+        System.out.println();
         System.out.println(pq);
 
         /*
@@ -65,12 +69,15 @@ public class QueueUsage {
         for(Book b:al)
         System.out.println(b.id+" "+b.name+" "+b.author+" "+b.publisher+" "+b.quantity);
 
+        // DOUBLE ENDED QUEUE with Linked List
         Queue<String> llq = new LinkedList<>();
         llq.add("ashok");
         llq.offer("raju");
         System.out.println( llq.poll());
         System.out.println(llq);
         System.out.println(llq.peek());
+
+        testing();
     }
 
     static class Book implements Comparable<Book>{  
@@ -105,5 +112,21 @@ public class QueueUsage {
         else
             return 0;
         }
+    }
+    public static void testing()
+    {
+        Queue<Integer> deq_ll = new LinkedList<Integer>();
+        Queue<Integer> deq_arr = new ArrayDeque<Integer>(2);
+        Queue<Integer> pq = new PriorityQueue<Integer>(5);
+        
+        // Returns null
+        System.out.println(deq_ll.poll());
+        // Returns java.util.NoSuchElementException Exception.
+        //System.out.println(deq_ll.remove());
+
+        pq.add(2);
+        pq.add(2);
+        System.out.println(pq.poll());
+        
     }    
 }

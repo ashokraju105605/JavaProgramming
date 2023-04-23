@@ -20,8 +20,8 @@ public class LinkedListUsage {
         ll2.add("Jyothi");
         ll.addAll(ll2);
         System.out.println(ll.toString());
-        ll.addFirst("Test");  // ADD FIRST
-        ll.addLast("Finish"); // ADD LAST
+        //System.out.println(ll.addFirst("Test"));  // ADD FIRST, Returns void
+        //System.out.println(ll.addLast("Finish")); // ADD LAST, Returns void
         System.out.println(ll.toString());
         System.out.println(ll.get(2));
         System.out.println(ll.getFirst());
@@ -29,6 +29,8 @@ public class LinkedListUsage {
         System.out.println(ll.indexOf("Raju"));
         System.out.println(ll.isEmpty());
         System.out.println(ll.offer("Sita")); // add to end of list
+        System.out.println(ll.offerFirst("laxman")); // ADD FIRST
+        System.out.println(ll.offerLast("bharata")); // ADD LAST
         System.out.println(ll.toString());
         System.out.println(ll.peekFirst());
         System.out.println(ll.toString());
@@ -36,6 +38,8 @@ public class LinkedListUsage {
         System.out.println(ll.toString());
         System.out.println(ll.pollFirst()); // REMOVE FIRST
         System.out.println(ll.pollLast());  // REMOVE LAST
+        System.out.println(ll.removeFirst()); // REMOVE FIRST
+        System.out.println(ll.removeLast());  // REMOVE LAST
         System.out.println(ll.toString());
         System.out.println(ll.size());
 

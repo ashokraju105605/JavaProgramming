@@ -20,6 +20,7 @@ public class StackUsage {
         System.out.println(s.indexOf(6));
         System.out.println(s.indexOf(8));
         System.out.println(s.size());
+        System.out.println(s.isEmpty());
         System.out.println(s.toString());
         s.stream().forEach(System.out::println);
         System.out.println(s.peek());
@@ -27,5 +28,21 @@ public class StackUsage {
         Stack<String> s2 = new Stack<>();
 
         System.out.println(s2.push("ashok"));
+
+        Stack<Integer> stk = new Stack<Integer>();
+        stk.push(3);
+        stk.push(2);
+        stk.push(1);
+        Integer[] arr5 = stk.toArray(new Integer[0]);
+        System.out.println(Arrays.toString(arr5));
+        testing();
+    }
+    public static void testing()
+    {
+        Stack<Integer> st = new Stack<Integer>();
+
+        // will have java.util.EmptyStackException.
+        System.out.println(st.pop());
+
     }
 }

@@ -2,11 +2,17 @@ package LearnBasics;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.io.*;
 
 public class ArrayListUsage {
     public static void main(String[] args)
     {
+        testing();
+        //testing1();
+        testing2();
+        List<Integer> list1 = Arrays.asList(-9, -18, 0, 25, 4);
+        list1.stream().sorted().forEach(System.out::println);
         ArrayList<String> al = new ArrayList<String>();
         System.out.println("Jai Shree Ram");
         al.add("ashok");
@@ -24,7 +30,35 @@ public class ArrayListUsage {
         System.out.println(al.set(1, "Raju"));
         System.out.println(Arrays.toString(al.toArray()));
         System.out.println(al.remove(1));
+
+        // IF int is used for also the data, then remove will always take it as index, so use wrapper classes for data elements, instead of primitives.
+        al.remove("5");
         System.out.println(Arrays.toString(al.toArray()));
+
+        // Creating a list of Strings
+        List<String> list3 = Arrays.asList("3", "6", "8", 
+        "14", "15");
+
+        // create a list of integers
+        List<Integer> number = Arrays.asList(2,3,4,5);
+    
+        // demonstration of map method
+        List<Integer> square = number.stream().map(x -> x*x).
+                            collect(Collectors.toList());
+        System.out.println(square);
+            // demonstration of reduce method
+            int even =
+            number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
+
+        System.out.println(even);
+
+        // Using Stream mapToInt(ToIntFunction mapper)
+        // and displaying the corresponding IntStream
+        list3.stream().mapToInt(num -> Integer.parseInt(num))
+        .filter(num -> num % 3 == 0)
+        .forEach(System.out::println);
+
+        RelativeSorting();
 
         Iterator<String> it = al.iterator();
 
@@ -37,7 +71,7 @@ public class ArrayListUsage {
         }
         al.add("Ananya");
         System.out.println(al.toString());
-        Collections.sort(al);
+        Collections.sort(al);// Sorting method for ArrayList.
         System.out.println(al.toString());
 
         Student s1=new Student(101,"Rama",23);  
@@ -93,4 +127,116 @@ public class ArrayListUsage {
          this.age=age;  
         }  
     } 
+    static void RelativeSorting()
+    {
+        int A1[] = { 2, 1, 2, 5, 7, 1, 9, 9, 3, 6, 8, 8 };
+        int A2[] = { 2, 1, 8, 3, 1 };
+        int m = A1.length;
+        int n = A2.length;
+        // HashMap to store the indices of elements in
+        // the second array
+        HashMap<Integer, Integer> index = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            // Consider only first occurrence of element
+            if (!index.containsKey(A2[i]))
+                // Assign value of i+1
+                index.put(A2[i], i + 1);
+        }
+        int[] tmp
+        = Arrays.stream(A1)
+                  .boxed()
+                  .sorted((p1, p2) -> {
+                      int idx1 = index.getOrDefault(p1, 0);
+                      int idx2 = index.getOrDefault(p2, 0);
+
+                      // If both p1 and p2 are not present
+                      // in the second array,
+                      // sort them in ascending order
+                      if (idx1 == 0 && idx2 == 0)
+                          return p1 - p2;
+
+                      // If only p2 is present in the second
+                      // array, p2 comes before p1
+                      if (idx1 == 0)
+                          return 1;
+
+                      // If only p1 is present in the second
+                      // array, p1 comes before p2 (no swap)
+                      if (idx2 == 0)
+                          return -1;
+
+                      // If both p1 and p2 are present in
+                      // the second array, sort them
+                      // according to their respective
+                      // indices
+                      return idx1 - idx2;
+                  })
+                  .mapToInt(i -> i)
+                  .toArray();
+                          // Sorted values are copied to the original
+        // array
+        for (int i = 0; i < m; i++) {
+            A1[i] = tmp[i];
+        }
+        System.out.println(Arrays.toString(A1));
+    }
+    static void testing()
+    {
+        ArrayList<Integer> al = new ArrayList<Integer>(){};
+        al.add(1);
+        System.out.println(al.get(0));
+        //al.set(1,al.get(0));
+
+        int A1[] = { 2, 1, 2, 5, 7, 1, 9, 9, 3, 6, 8, 8 };
+        ArrayList<Integer> atl = new ArrayList<Integer>();
+        Arrays.stream(A1).boxed();
+
+        ArrayList<ArrayList<Integer>> alll = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 2, 3));
+        alll.add(list);
+
+        ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,2,3));
+        System.out.println(alll.contains(list1));
+
+    }
+    static void ArraydqTesting()
+    {
+        Deque<Long> q = new ArrayDeque<Long>();
+
+        q.descendingIterator();
+    }
+    public static void testing1()
+    {
+        ArrayList<Integer> al = new ArrayList<Integer>();
+        al.add(4);
+        // al[0] -- WRONG.
+        System.out.println(); // cannot read an element like this.
+        System.out.println(al.get(0));
+        System.out.println(al.indexOf(4));
+        // Exception in thread "main" java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
+        //System.out.println(al.set(1, 5));
+        
+        // Can only set elements that are in the list.
+        
+        System.out.println(al.set(0,8));
+        System.out.println(al.get(0));
+        // be careful with primitive data types on arraylist as remove(int index) and remove(object o) can both be same with int.
+       
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        adj.add(new ArrayList<Integer>());
+        adj.get(0).add(1,3);  
+
+        
+
+    }
+    public static void testing2()
+    {
+        ArrayList<Integer> al = new ArrayList<Integer>();
+        al.add(1);
+        al.add(0,2); // insert
+        System.out.println(al.get(0));
+        al.set(0,5); // update
+        System.out.println(al.get(0));
+    }
 }

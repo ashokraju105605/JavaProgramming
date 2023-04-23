@@ -34,6 +34,7 @@ public class HashMapUsage {
         System.out.println(hm.replace(104, "raju"));
         System.out.println(hm.getOrDefault(103,"test-----"));
         System.out.println(hm.toString());
+        System.out.println();
         hm.forEach( (key,value) -> System.out.println(key + " ### " + value));
 
 
@@ -42,6 +43,8 @@ public class HashMapUsage {
         lhm.put(100,"Amit");    
         lhm.put(101,"Vijay");    
         lhm.put(102,"Rahul");  
+        
+        
         
         
         // Java TreeMap class is a red-black tree based implementation
@@ -63,7 +66,7 @@ public class HashMapUsage {
         System.out.println(tm.navigableKeySet());
         System.out.println(tm.remove(102));
 
-        
+                
 
 
     }

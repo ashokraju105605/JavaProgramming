@@ -26,6 +26,9 @@ public class TreeSetUsage {
         System.out.println(ts.floor(2));
         System.out.println(ts.contains(3));
         System.out.println(ts.isEmpty());
+        System.out.println(ts.tailSet(2));
+        System.out.println(ts.headSet(2));
+        System.out.println(ts.subSet(1, 2));
         System.out.println(ts.remove(4));
         System.out.println(ts.first());
         System.out.println(ts.last());

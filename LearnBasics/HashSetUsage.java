@@ -26,8 +26,14 @@ public class HashSetUsage {
         System.out.println(hs.toString());
 
         hs.removeAll(hs2); //SUBTRACT all elements of set 2 from set 1
-        System.out.println(hs); 
+        System.out.println(hs);
+        System.out.println(); 
 
+        
+        
+        
+        
+        // LINKED HASH SET has same interface methods as hash set , only diff is it used linked list rather than arraylist.
         LinkedHashSet<String> lhs = new LinkedHashSet<String>();
         lhs.add("Ashok");
         lhs.add("Raju");
@@ -36,5 +42,26 @@ public class HashSetUsage {
         System.out.println(lhs.remove("rama"));
 
         System.out.println(lhs);
+        
+
+
+        // TREE SET gives unique advantage that it can provide the floor , ceil, headset, tailset methods due to its sorted order of contents.
+        TreeSet<String> sts = new TreeSet<String>(); // if you use SortedSet for the sts type, then you will lose ceiling, floor methods.
+        sts.add("ashok");
+        sts.add("raju");
+        sts.add("rama");
+        sts.add("sita");
+        sts.add("laxman");
+
+        System.out.println(sts.contains("rama"));
+        System.out.println(sts.first());
+        System.out.println(sts.toString());
+        System.out.println(sts.last());
+        System.out.println(sts.headSet("sita"));
+        System.out.println(sts.tailSet("rama"));
+        System.out.println(sts.ceiling("sita"));
+        System.out.println(sts.ceiling("manu"));
+        System.out.println(sts.floor("manu"));
+        
     }
 }
