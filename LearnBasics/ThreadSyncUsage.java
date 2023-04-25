@@ -1,23 +1,27 @@
 package LearnBasics;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ThreadSyncUsage {
     public static void main(String[] args)
     {
         System.out.println("Jai Shree Ram");
-/*
+/**/
         new Thread(){  public void run(){  Table.printTable(1); } }.start();  
         new Thread(){  public void run(){  Table.printTable(10); } }.start();  
         new Thread(){  public void run(){  Table.printTable(100); } }.start();  
-        new Thread(){  public void run(){  Table.printTable(1000); } }.start();
+        new Thread( () -> {Table.printTable(1000);} ).start();
         
         Table1 obj = new Table1();//only one object    
         MyThread1 t1=new MyThread1(obj);    
         MyThread2 t2=new MyThread2(obj);    
         t1.start();    
         t2.start();
-*/        
+/* */        
         Semaphore semaphore = new Semaphore(3); // Creates a Semaphore with 3 permits
         Thread[] threads = new Thread[5];
         for (int i = 0; i < 5; i++) {
@@ -93,6 +97,46 @@ class Task implements Runnable {
             semaphore.release(); // Releases the permit back to the semaphore
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+}
+
+class LockExample {
+    private Lock lock = new ReentrantLock();
+
+    public void sharedResourceMethod() {
+        lock.lock(); // acquire the lock
+        try {
+            // critical section - only one thread can access this code at a time
+            // manipulate shared resource
+            System.out.println("Jai Shree Ram");
+        } finally {
+            lock.unlock(); // release the lock
+        }
+    }
+}
+
+class Counter extends Thread {
+ 
+    // Atomic counter Variable
+    AtomicInteger count;
+ 
+    // Constructor of class
+    Counter()
+    {
+        count = new AtomicInteger();
+    }
+ 
+    // method which would be called upon
+    // the start of execution of a thread
+    public void run()
+    {
+ 
+        int max = 1_000_00_000;
+ 
+        // incrementing counter total of max times
+        for (int i = 0; i < max; i++) {
+            count.addAndGet(1);
         }
     }
 }
