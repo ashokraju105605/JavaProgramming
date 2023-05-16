@@ -33,5 +33,6 @@ public class TreeSetUsage {
         System.out.println(ts.first());
         System.out.println(ts.last());
         System.out.println(ts.size());
+        
     }
 }

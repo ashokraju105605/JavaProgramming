@@ -1,6 +1,7 @@
 package LearnBasics;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class HashSetUsage {
     public static void main(String[] args)
@@ -34,6 +35,7 @@ public class HashSetUsage {
         
         
         // LINKED HASH SET has same interface methods as hash set , only diff is it used linked list rather than arraylist.
+        //HashSet does not provide any method to maintain the insertion order. Comparatively, LinkedHashSet maintains the insertion order of the elements.
         LinkedHashSet<String> lhs = new LinkedHashSet<String>();
         lhs.add("Ashok");
         lhs.add("Raju");
@@ -59,9 +61,37 @@ public class HashSetUsage {
         System.out.println(sts.last());
         System.out.println(sts.headSet("sita"));
         System.out.println(sts.tailSet("rama"));
+        System.out.println(sts.subSet("raju","sita").toString());
         System.out.println(sts.ceiling("sita"));
         System.out.println(sts.ceiling("manu"));
         System.out.println(sts.floor("manu"));
+
+        Addprimitivestohashset();
         
+    }
+    public static void Addprimitivestohashset()
+    {
+        int[] arr1 = new int[]{1, 4, 45, 6, 10, 8};
+        HashSet<Integer> hs1 = new HashSet<>();
+        hs1.addAll(Arrays.stream(arr1).boxed().collect(Collectors.toSet()));
+        
+        long[] a1 = {1,2,3,4};
+        // Cannot use HashSet below for hs3 type as the return is to a Set from RHS.
+        Set<Long> hs3 = Arrays.stream(a1).boxed().collect(Collectors.toSet());
+    }
+    public String isSubset( long a1[], long a2[], long n, long m) {
+        
+        HashSet<Long> hs1 = new HashSet<Long>();
+        Set<Long> hs3 = Arrays.stream(a1).boxed().collect(Collectors.toSet());
+        for(long x:a1)
+            hs1.add(x);
+        HashSet<Long> hs2 = new HashSet<Long>();
+        for(long x:a2)
+            hs2.add(x);
+        hs1.retainAll(hs2);
+        if(hs1.size()<Math.min(m,n))
+            return "No";
+        else
+            return "Yes";
     }
 }

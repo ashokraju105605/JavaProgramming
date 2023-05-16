@@ -3,6 +3,9 @@ package LearnBasics;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import javax.swing.SpinnerDateModel;
+
 import java.io.*;
 
 public class ArrayListUsage {
@@ -11,6 +14,7 @@ public class ArrayListUsage {
         testing();
         //testing1();
         testing2();
+        arrayStreamReduceTest();
         List<Integer> list1 = Arrays.asList(-9, -18, 0, 25, 4);
         list1.stream().sorted().forEach(System.out::println);
         ArrayList<String> al = new ArrayList<String>();
@@ -30,6 +34,7 @@ public class ArrayListUsage {
         System.out.println(al.set(1, "Raju"));
         System.out.println(Arrays.toString(al.toArray()));
         System.out.println(al.remove(1));
+        System.out.println();
 
         // IF int is used for also the data, then remove will always take it as index, so use wrapper classes for data elements, instead of primitives.
         al.remove("5");
@@ -115,6 +120,8 @@ public class ArrayListUsage {
             System.out.println(e);  
         } 
 
+        testequals();
+
     }
 
     static class Student{  
@@ -199,6 +206,8 @@ public class ArrayListUsage {
         ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,2,3));
         System.out.println(alll.contains(list1));
 
+        System.out.println(alll.size());
+
     }
     static void ArraydqTesting()
     {
@@ -238,5 +247,37 @@ public class ArrayListUsage {
         System.out.println(al.get(0));
         al.set(0,5); // update
         System.out.println(al.get(0));
+    }
+    public static void arrayStreamReduceTest()
+    {
+        // String array
+        String[] array = { "test", "with", "temp" };
+
+        // The result of the reduce() method is
+        // an Optional because the list on which
+        // reduce() is called may be empty.
+        Optional<String> String_combine = Arrays.stream(array)
+                                            .reduce((str1, str2)
+                                            -> str1 + "-" + str2);
+    
+        // Displaying the combined String
+        if (String_combine.isPresent()) {
+            System.out.println(String_combine.get());
+        
+        }
+    }
+    public static void testequals()
+    {
+        // used for comparing list of elements into an array(array(int))
+        ArrayList<Integer> al1 = new ArrayList<>();
+        al1.add(1);al1.add(2); al1.add(3);
+
+        ArrayList<Integer> al2 = new ArrayList<>();
+        al2.add(1);al2.add(2); al2.add(3);
+
+        if(al1.equals(al2))
+            System.out.println("EQUALS");
+        else
+            System.out.println("NOT EQUALS");
     }
 }

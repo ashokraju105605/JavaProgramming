@@ -3,11 +3,10 @@ package LearnBasics;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ThreadSyncUsage {
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         System.out.println("Jai Shree Ram");
 /**/
@@ -28,6 +27,17 @@ public class ThreadSyncUsage {
             threads[i] = new Thread(new Task(semaphore, i));
             threads[i].start();
         }
+
+        
+        Runnable task = () -> {
+            for (int i = 0; i < 1000; i++) {
+                System.out.println(i);
+            }
+        };
+        Thread t3 = new Thread(task);
+        t3.start();
+        t3.join();
+
     }
 }
 class Table{  
@@ -91,9 +101,11 @@ class Task implements Runnable {
     public void run() {
         try {
             semaphore.acquire(); // Acquires a permit from the semaphore
+
             System.out.println("Thread " + id + " ACQUIRED a permit");
             Thread.sleep(1000); // Simulates some work
             System.out.println("Thread " + id + " RELEASING a permit");
+            
             semaphore.release(); // Releases the permit back to the semaphore
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -102,7 +114,7 @@ class Task implements Runnable {
 }
 
 class LockExample {
-    private Lock lock = new ReentrantLock();
+    private Lock lock = new ReentrantLock(true);
 
     public void sharedResourceMethod() {
         lock.lock(); // acquire the lock

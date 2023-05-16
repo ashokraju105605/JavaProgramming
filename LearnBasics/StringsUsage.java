@@ -76,6 +76,9 @@ public class StringsUsage {
         System.out.println(FirstNonRepeating("aabc"));
 
         binaryStringOperations();
+        convertNumtoString();
+        StringBuilderUsage();
+        characterUsage();
 
     }
 
@@ -104,5 +107,35 @@ public class StringsUsage {
 	    int num2 = Integer.parseInt("1001", 2);
 	    String sum = Integer.toBinaryString(num1+num2);
         System.out.println(sum);
+    }
+    public static void convertNumtoString()
+    {
+        String str = String.valueOf(545);
+        StringBuffer sb = new StringBuffer(str);
+        sb.reverse();
+        System.out.println(str.equals(""+sb));
+
+        StringBuffer sb2 = new StringBuffer("123");
+        sb2.reverse();
+        System.out.println(sb2.toString());
+    }
+    public static void StringBuilderUsage()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append('a');
+        sb.append("shok");
+        System.out.println(sb);
+    }
+    public static void characterUsage()
+    {
+        Character ch = 'a';
+        System.out.println(Character.toUpperCase(ch));
+        System.out.println(Character.valueOf('a'));
+        System.out.println(ch.isDigit(0));
+        
+        String s = "i.like.this.program.very.much";
+        String[] str = s.split("\\.");
+        Collections.reverse(Arrays.asList(str));
+        String res = String.join(".",str);
     }
 }

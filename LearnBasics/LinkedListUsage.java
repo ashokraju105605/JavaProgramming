@@ -20,6 +20,7 @@ public class LinkedListUsage {
         ll2.add("Jyothi");
         ll.addAll(ll2);
         System.out.println(ll.toString());
+        System.out.println(ll.set(1,"grape"));
         //System.out.println(ll.addFirst("Test"));  // ADD FIRST, Returns void
         //System.out.println(ll.addLast("Finish")); // ADD LAST, Returns void
         System.out.println(ll.toString());
@@ -28,6 +29,8 @@ public class LinkedListUsage {
         System.out.println(ll.getLast());
         System.out.println(ll.indexOf("Raju"));
         System.out.println(ll.isEmpty());
+        ll.addFirst("test");
+        ll.addLast("temp");
         System.out.println(ll.offer("Sita")); // add to end of list
         System.out.println(ll.offerFirst("laxman")); // ADD FIRST
         System.out.println(ll.offerLast("bharata")); // ADD LAST

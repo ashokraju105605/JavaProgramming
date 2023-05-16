@@ -1,6 +1,7 @@
 package LearnBasics;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class HashMapUsage {
     public static void main(String[] args)
@@ -39,10 +40,13 @@ public class HashMapUsage {
 
 
         // SAME OPERATIONS FOR LINKEDHASHMAP, instead of array it used linkedlist for buckets.
+        // can be used as LRU Cache as this uses doubly linked list of buckets. and also maintains insertion order.
         LinkedHashMap<Integer,String> lhm = new LinkedHashMap<Integer,String>();
-        lhm.put(100,"Amit");    
-        lhm.put(101,"Vijay");    
-        lhm.put(102,"Rahul");  
+        lhm.put(100,"Amit"); 
+        lhm.put(102,"Rahul");     
+        lhm.put(101,"Vijay");  
+        System.out.println(lhm.toString());  
+        
         
         
         
@@ -65,9 +69,9 @@ public class HashMapUsage {
         System.out.println(tm.descendingMap());
         System.out.println(tm.navigableKeySet());
         System.out.println(tm.remove(102));
-
-                
-
-
+        System.out.println(tm.firstKey());
+        System.out.println(tm.lastKey());
+        System.out.println(tm.firstEntry());
+        System.out.println(tm.lastEntry());
     }
 }

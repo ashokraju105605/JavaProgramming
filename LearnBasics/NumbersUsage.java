@@ -1,5 +1,7 @@
 package LearnBasics;
 
+import java.math.BigInteger;
+
 public class NumbersUsage {
     public static void main(String[] args) {
         System.out.println("Jai Shree Ram");
@@ -20,6 +22,13 @@ public class NumbersUsage {
         long mod = 1000_000_007;
         System.out.println(mod);
         testing();
+        FactorialBigInt();
+        mathLibTests();
+        ConvertIntegerToString();
+        PalindromeCheck();
+        ReverseDigits();
+        BinStringToDecimal();
+
     }
     public static void testing()
     {
@@ -29,6 +38,7 @@ public class NumbersUsage {
         System.out.println(Integer.bitCount(5));
         System.out.println(Integer.valueOf("23"));
         System.out.println(Integer.valueOf(25));
+        System.out.println(Integer.toString(23));
         System.out.println(Integer.compare(2,3));
         System.out.println(Integer.compare(3,3));
         System.out.println(Integer.signum(-300));
@@ -38,8 +48,60 @@ public class NumbersUsage {
         System.out.println(Double.POSITIVE_INFINITY);
         System.out.println(Double.NEGATIVE_INFINITY);
 
-        System.out.println(Character.isDigit('1'));
-        
+        System.out.println(Character.isDigit('1'));       
 
+    }
+    public static void FactorialBigInt()
+    {
+        BigInteger res = BigInteger.ONE;
+        for(int i=2;i<10;i++)
+            res = res.multiply(BigInteger.valueOf(i));
+        System.out.println(res.longValue());
+    }
+    public static void mathLibTests(){
+        double sol = Math.cbrt(8);
+        double sol1 = Math.sqrt(4);
+        int sol2 = Math.abs(-1);
+        double sol3 = Math.pow(2,4);
+        double sol4 = Math.ceil(23.2);
+        double sol5 = Math.exp(2);
+        double sol6 = Math.floor(23.2);
+        double sol7 = Math.round(23.5);
+        double sol8 = (int)(Math.random()* 10);
+    }
+
+    public static void ConvertIntegerToString()
+    {
+        String s = Integer.toString(53);
+        String s1 = String.valueOf(53);
+
+        StringBuilder sb = new StringBuilder("35");
+        sb.reverse();
+
+        if(s.equals(s1))
+            System.out.println(s);
+        if(s1.equals(""+sb))
+            System.out.println(sb);
+    }
+    public static void PalindromeCheck()
+    {
+        int sum = 53;
+        String num1 = String.valueOf(sum);
+        StringBuilder sb = new StringBuilder(num1);
+        sb.reverse();
+        if (num1.equals(""+sb)) {
+            System.out.println("PALINDROME");
+        }
+    }
+    public static void ReverseDigits()
+    {
+        Long n = 1234L;
+        String numString = Long.toString(n);
+        String reversedString = new StringBuilder(numString).reverse().toString();
+        System.out.println( Long.parseLong(reversedString));
+    }
+    public static void BinStringToDecimal()
+    {
+        System.out.println(Integer.parseInt("1011",2));
     }
 }

@@ -155,10 +155,46 @@ public class ArraysUsage {
     {
         int[][] mat = {{0,0,0},{1,1,1}};
         int [][] dp=mat.clone();
+
+        int[] arr = {1,2,3};
+        int[] arr1 = arr.clone();
     }
     public static void intToBooleanConv()
     {
         int value = 1;
         boolean result = (value != 0);
+    }
+    public int[] findFibSubset(int arr[], int n)
+    {
+        ArrayList<Integer>list = new ArrayList<>();
+        
+        for(int i=0; i<n; i++){
+            if(checkfib(arr[i])){
+                list.add(arr[i]);
+            }
+        }
+
+        return list.stream().mapToInt(Integer::intValue).toArray();
+    }
+    public static boolean checkfib(int n){
+        int a=0, b=1, c=0;
+        if(n==a || n==b){
+            return true;
+        }
+        while(c<=n){
+            c=a+b;
+            if(c==n){
+                return true;
+            }
+            a=b;
+            b=c;
+        }
+        return false;
+    }
+    public static void directionsArrayInit()
+    {
+        int[][] dir = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+
+        int[][] directions = {{1,0},{0,1},{-1,0},{0,-1}};
     }
 }

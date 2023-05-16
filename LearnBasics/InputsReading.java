@@ -46,5 +46,6 @@ public class InputsReading {
             bw.write("hello world!!");
             
         }
+        sc.close();
     }
 }
