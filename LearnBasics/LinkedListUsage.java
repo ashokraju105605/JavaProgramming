@@ -5,6 +5,7 @@ import java.util.*;
 public class LinkedListUsage {
     public static void main(String[] args)
     {
+        // LinkedList is a Double Eneded Queue in Java.
         System.out.println("Jai Shree Ram");
         LinkedList<String> ll = new LinkedList<String>();
 
@@ -50,5 +51,21 @@ public class LinkedListUsage {
         System.out.println(ll.remove("ashok"));
         ll.clear();
         System.out.println(ll.toString());
+        ArrayDequeueTest();
+    }
+    public static void ArrayDequeueTest()
+    {
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+        ad.add(2);
+        ad.add(4);
+        ad.addFirst(1);
+        ad.addLast(6);
+        ad.getFirst();
+        ad.peekFirst();
+        
+
+        System.out.println(ad.pollFirst());
+        System.out.println(ad.pollLast());
+        System.out.println(ad.toString());
     }
 }

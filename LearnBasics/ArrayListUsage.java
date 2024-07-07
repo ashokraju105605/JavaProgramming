@@ -4,8 +4,6 @@ package LearnBasics;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import javax.swing.SpinnerDateModel;
-
 import java.io.*;
 
 public class ArrayListUsage {
@@ -15,6 +13,7 @@ public class ArrayListUsage {
         //testing1();
         testing2();
         arrayStreamReduceTest();
+        ArrayListOperations();
         List<Integer> list1 = Arrays.asList(-9, -18, 0, 25, 4);
         list1.stream().sorted().forEach(System.out::println);
         ArrayList<String> al = new ArrayList<String>();
@@ -197,6 +196,7 @@ public class ArrayListUsage {
 
         int A1[] = { 2, 1, 2, 5, 7, 1, 9, 9, 3, 6, 8, 8 };
         ArrayList<Integer> atl = new ArrayList<Integer>();
+        
         Arrays.stream(A1).boxed();
 
         ArrayList<ArrayList<Integer>> alll = new ArrayList<>();
@@ -245,8 +245,17 @@ public class ArrayListUsage {
         al.add(1);
         al.add(0,2); // insert
         System.out.println(al.get(0));
+        
         al.set(0,5); // update
         System.out.println(al.get(0));
+        //al.remove(7); // problem as the remove is multiplexed, between index and also object.
+                            // so avoid arraylist of integers.
+        /*if you want to remove object check contains first and then remove */
+        al.add(7);
+        
+        al.remove(al.indexOf(7));
+        al.remove(1);
+        System.out.println(al.toString());
     }
     public static void arrayStreamReduceTest()
     {
@@ -257,8 +266,7 @@ public class ArrayListUsage {
         // an Optional because the list on which
         // reduce() is called may be empty.
         Optional<String> String_combine = Arrays.stream(array)
-                                            .reduce((str1, str2)
-                                            -> str1 + "-" + str2);
+                                            .reduce((str1, str2) -> str1 + "-" + str2);
     
         // Displaying the combined String
         if (String_combine.isPresent()) {
@@ -279,5 +287,29 @@ public class ArrayListUsage {
             System.out.println("EQUALS");
         else
             System.out.println("NOT EQUALS");
+    }
+
+    public static void ArrayListOperations()
+    {
+        // Create
+        ArrayList<Integer> al = new ArrayList<>();
+        al.add(2);al.add(3);al.add(4);
+
+        // Read element
+        Integer x = al.get(2);
+
+        // update element
+        x = al.set(2,5);
+
+        // insert element
+        al.add(1,4);
+
+        // delete element
+        x = al.remove(0);
+        x = al.remove(al.indexOf(5));al.remove("5");
+
+        // search element
+        boolean exists = al.contains(3);
+        int index = al.indexOf(2);
     }
 }

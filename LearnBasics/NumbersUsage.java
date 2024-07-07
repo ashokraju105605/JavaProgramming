@@ -29,6 +29,28 @@ public class NumbersUsage {
         ReverseDigits();
         BinStringToDecimal();
 
+        
+        byte b = 2;
+        short c = 3;
+        int a=1;
+        long d = 100L;
+        float e = 2.3f;
+        double db = 19.99d;
+
+        Byte f = 2;
+        Short g = 3;
+        Integer h = 5;
+        Long i = 20L;
+        Float j = 2.22F;
+        Double k = 13.3333D;
+
+        Integer abc = null;
+
+        if(abc==null)
+            System.out.println("abc Integer is null");         
+
+        
+
     }
     public static void testing()
     {
@@ -103,5 +125,12 @@ public class NumbersUsage {
     public static void BinStringToDecimal()
     {
         System.out.println(Integer.parseInt("1011",2));
+    }
+    public static void boolTest()
+    {
+        boolean flag = true;
+        Boolean flag1 = false;
+
+        flag1.toString();
     }
 }

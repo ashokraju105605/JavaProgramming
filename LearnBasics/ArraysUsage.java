@@ -1,6 +1,8 @@
 package LearnBasics;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ArraysUsage {
 
@@ -20,6 +22,7 @@ public class ArraysUsage {
         arr[0] = 10;
         int[] arr1 = { 1, 2, 3, 4, 5 };
         Integer[] arr2 = {1,2,3,4,5};
+        arr2[1] = new Integer(4);
 
         int [] nums = {1,2,3,4,5};
         int sum = Arrays.stream(nums).sum();
@@ -28,12 +31,15 @@ public class ArraysUsage {
         Collections.reverse(Arrays.asList(arr1));
         System.out.println(Arrays.asList(arr1)); // doesn't reverse
 
+        List<Integer> arrList = Arrays.stream(arr1).boxed().collect(Collectors.toCollection(ArrayList::new));
+        Collections.reverse(arrList); // works
+
         String[] str = {"ashok","raju","gadhiraju"};
         Collections.reverse(Arrays.asList(str));
         System.out.println(String.join(" ",str)); //works.
 
         Collections.reverse(Arrays.asList(arr2));
-        System.out.println(Arrays.asList(arr2)); // REVERSES
+        System.out.println(Arrays.asList(arr2)); // REVERSES, works
         // Below throwing exception
         //Integer[] subarr1 = Arrays.asList(arr).subList(2, 4).toArray(new Integer[0]);
         //System.out.println(Arrays.toString(subarr1));
@@ -49,9 +55,13 @@ public class ArraysUsage {
         System.out.println(Arrays.toString(arr)); //print array
         System.out.println(arr3.length);
 
+        Predicate<Integer> pred = (x) -> x > 10;
+        boolean temp = pred.test(5);
+        temp = pred.test(15);
 
         System.out.println(Arrays.binarySearch(arr3, 20));
         System.out.println(Arrays.binarySearch(arr3, 70));
+        System.out.println(Arrays.binarySearch(arr3, 130));
         System.out.println(Arrays.binarySearch(arr3, 190));
         System.out.println(Arrays.binarySearch(arr3, 120));
 
@@ -66,6 +76,7 @@ public class ArraysUsage {
             System.out.print(x + " ");
         }
         System.out.println();
+        // have more control on previous and next items while traversing the current element.
         for (int i = 0; i < arr.length; i++)
             System.out.print(arr[i] + " ");
 
@@ -74,6 +85,7 @@ public class ArraysUsage {
 
         String[] animals = { "Cat", "Alligator", "Fox", "Donkey", "Bear", "Elephant", "Goat" };
         Arrays.sort(animals, 0, 3); // start inclusive, end exclusive in java per convention.
+        Arrays.sort(animals,(String a1, String b1) -> a1.compareTo(b1));
         System.out.println(Arrays.toString(animals));
 
         // System.out.println("%s", String.join(", ", animals)); // --doesn't work like
@@ -101,7 +113,7 @@ public class ArraysUsage {
         });
 
         Arrays.stream(p).forEach( e -> System.out.println(e.name + " " + e.age));
-
+        // Reverse an Integer.
         Long a = 1L;
         String slong = Long.toBinaryString(a);
         StringBuffer sb = new StringBuffer(slong);
@@ -140,6 +152,21 @@ public class ArraysUsage {
         int min = Arrays.stream(arr1).min().getAsInt();
         int sum = Arrays.stream(arr1).sum();
         Double avg = Arrays.stream(arr1).average().getAsDouble();
+    }
+    public static void convertArrayListToArray()
+    {
+            ArrayList<Integer> integerArrayList = new ArrayList<Integer>();
+            integerArrayList.add(1);
+            integerArrayList.add(2);
+            integerArrayList.add(3);
+            integerArrayList.add(4);
+            integerArrayList.add(5);
+        int[] intArray = integerArrayList.stream().mapToInt(i -> i).toArray();
+    }
+    public static void convertArrayToArrayList()
+    {
+        int[] arr1 = new int[]{};
+        List<Integer> arrList = Arrays.stream(arr1).boxed().collect(Collectors.toCollection(ArrayList::new));
     }
     public static void reverseArray(){
         // doesn't work with primitive data types like int.
@@ -193,8 +220,13 @@ public class ArraysUsage {
     }
     public static void directionsArrayInit()
     {
-        int[][] dir = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+        int[][] dir4 = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
 
-        int[][] directions = {{1,0},{0,1},{-1,0},{0,-1}};
+        int[][] d4 = {{-1,0},{0,1},{1,0},{0,-1}};
+
+        int[][] d8 = {{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}};
+
+        // Knight Directions.
+        int[][] KD = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
     }
 }

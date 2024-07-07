@@ -48,6 +48,8 @@ public class QueueUsage {
         while (iterator.hasNext()) {
             System.out.print(iterator.next() + " ");
         }
+
+        Queue<int[]> pq1 = new PriorityQueue<>(3,(int[] a, int[] b)-> a[0]-b[0]);
     }
 
 }

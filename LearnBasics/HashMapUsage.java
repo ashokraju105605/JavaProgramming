@@ -21,6 +21,15 @@ public class HashMapUsage {
             System.out.println(m.toString());
         }
 
+        // Below is useful when navigation and removal on hashmap is needed concurrently.
+        Iterator<Map.Entry<Integer,String>> it = hm.entrySet().iterator();
+        while(it.hasNext())
+        {
+            Map.Entry<Integer,String> kvp = it.next();
+            //it.remove();
+            System.out.println(kvp.getKey() + " " + kvp.getValue());
+        }
+
         System.out.println(hm.containsKey(103));
         System.out.println(hm.containsValue("Amit"));
         System.out.println(hm.isEmpty());
@@ -73,5 +82,79 @@ public class HashMapUsage {
         System.out.println(tm.lastKey());
         System.out.println(tm.firstEntry());
         System.out.println(tm.lastEntry());
+
+        
+    }
+
+    public static void mapDefault()
+    {
+        HashMap<String,ArrayList<String>> mp = new HashMap<>();
+        String sort = "abc";
+        // below doesn't work because the get doesn't return the arraylist after adding.
+        // The error in the code is that the add() method of the ArrayList class returns a boolean value 
+        // indicating whether the operation was successful or not
+        //mp.put(sort,mp.getOrDefault(sort,new ArrayList()).add("bac"));
+
+        /* Correct Way is below.
+         * ArrayList<String> list = mp.getOrDefault(sort,new ArrayList());
+            list.add("bac");
+            mp.put(sort,list);
+         */
+    }
+
+    /*
+     * You are getting a ConcurrentModificationException because you are trying to modify the HashMap while iterating over it. 
+     * To fix this issue, you can use an Iterator and its remove() method to safely remove elements from the HashMap while iterating. 
+     * Here's a corrected version of your code:
+     * 
+     * Iterator<Map.Entry<Long,ArrayList<Character>>> iterator = hm.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Long,ArrayList<Character>> me = iterator.next();
+            Long t = me.getKey();
+            if (t < (ts - windowtimesize)) {
+                iterator.remove();
+                windowsize -= me.getValue().size();
+            }
+        }
+
+
+        The ConcurrentModificationException in the context of a HashMap usually occurs 
+        when you modify the map (e.g., adding or removing entries) while iterating over 
+        its elements using an iterator or enhanced for loop. This can happen if you modify 
+        the map directly within the loop or if another thread modifies the map during the 
+        iteration.
+     */
+
+    class RangeModule {
+        // https://leetcode.com/problems/range-module/solutions/2904396/cleanest-easiest-to-understand-treemap/?envType=featured-list&envId=top-google-questions 
+        TreeMap<Integer, Integer> m = new TreeMap<>();
+        public RangeModule() {}
+        
+        public void addRange(int s, int e) { // s: start, e: end
+            // find overlap ranges, calc merged range, clear overlapped ranges, insert merged range
+            var L = m.floorEntry(s); // left possible overlap entry
+            var R = m.floorEntry(e); // right possible overlap entry
+
+            if (L != null && L.getValue() >= s) s = L.getKey(); // update overlap start
+            if (R != null && R.getValue() > e) e = R.getValue(); // update overlap end
+
+            m.subMap(s, e).clear(); // clear all overlapped entries
+            m.put(s, e); // save final merged entry
+        }
+        
+        public boolean queryRange(int s, int e) {
+            var L = m.floorEntry(s);
+            return L != null && L.getValue() >= e; // if there exist a range: start <+ s, end >= e
+        }
+        
+        public void removeRange(int s, int e) {
+            var L = m.floorEntry(s); // left possible overlap entry
+            var R = m.floorEntry(e); // right possible overlap entry
+
+            if (L != null && L.getValue() > s) m.put(L.getKey(), s); // after removal, if anything left
+            if (R != null && R.getValue() > e) m.put(e, R.getValue()); // after removal, if anything left
+
+            m.subMap(s, e).clear(); // removal
+        }
     }
 }

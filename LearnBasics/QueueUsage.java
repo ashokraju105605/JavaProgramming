@@ -25,7 +25,8 @@ public class QueueUsage {
         Iterator<String> it = pq.iterator();
         while(it.hasNext())
         {
-            System.out.println(it.next());
+            String temp = it.next();
+            System.out.println(temp);
         }
 
         System.out.println(pq.peek());
@@ -33,7 +34,7 @@ public class QueueUsage {
         System.out.println(pq.poll());
         System.out.println(pq.element());
         System.out.println(pq.offer("rama"));
-        System.out.println();
+        System.out.println(pq.isEmpty());
         System.out.println(pq);
 
         /*
@@ -64,6 +65,12 @@ public class QueueUsage {
         ArrayList<Book> al = new ArrayList<Book>();
         al.add(b1);al.add(b2);al.add(b3);
         Collections.sort(al, new BookComparator());
+        al.sort(new BookComparator());
+        
+        Comparator<Book> comp = Comparator.comparing((Book b)-> b.id);
+        Collections.sort(al,comp);
+
+        Collections.sort(al,(Book b, Book bb)-> b.id-bb.id);
 
         System.out.println();
         for(Book b:al)

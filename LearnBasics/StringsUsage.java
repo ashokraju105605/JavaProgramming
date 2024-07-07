@@ -1,6 +1,7 @@
 package LearnBasics;
 
 import java.util.regex.*;
+
 import java.util.*;
 
 public class StringsUsage {
@@ -25,7 +26,7 @@ public class StringsUsage {
         System.out.println(s.isBlank());  // " " is true for isBlank, same as trim and then check empty.
         System.out.println(s.matches("\\S+"));
         System.out.println(s.toCharArray());
-        System.out.println(String.format("%s world", "hello"));
+        System.out.println(String.format("%1$s world,  %1$s %2$s", "hello", "ashok"));
 
         System.out.println(Pattern.matches("[a-z]*", "ashok")); // use java.util.regex.*
         
@@ -79,6 +80,10 @@ public class StringsUsage {
         convertNumtoString();
         StringBuilderUsage();
         characterUsage();
+        traverseString();
+        charToIntConv();
+        testing12();
+        stringComparision();
 
     }
 
@@ -138,4 +143,118 @@ public class StringsUsage {
         Collections.reverse(Arrays.asList(str));
         String res = String.join(".",str);
     }
+    public static void StringOps()
+    {
+        String S = "Ashok";
+        for(char ch:S.toCharArray()){
+            Character.toUpperCase(ch);
+            
+        }
+        String sorted = "abc";
+        StringBuilder reversed= new StringBuilder();
+        
+        reversed.append(sorted);
+        reversed.reverse();
+        String.valueOf(reversed);
+        String s = "I am :IronnorI Ma, i";
+        String str=s.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
+
+
+        String[] str1 = S.split("\\."); // . means any character, so use escape sequence \\
+        Collections.reverse(Arrays.asList(str1));
+        String res = String.join(".",str1);
+
+        s.indexOf("x");
+    }
+    public static void traverseString()
+    {
+        String s = "ashok";
+        for(Character c: s.toCharArray())
+            System.out.println(c);
+
+        char[] carr = s.toCharArray();
+        int[] arr = new int[128];
+        for(char c : carr)
+        {
+            arr[c]++;
+        }
+        System.out.println(arr.toString()); // doesn't print as the function doesn't apply 
+        // to primitives
+        // but it is using the toString() method on the array object, which returns a string representation 
+        // of the array object itself, not its contents.
+        // To print the contents of the array, you can use Arrays.toString(arr) method which converts 
+        // the array to a string representation of its contents.
+        System.out.println(Arrays.toString(arr));
+    }
+    public static void charToIntConv()
+    {
+        String s = "ashok";
+        char[] carr = s.toCharArray();
+        int[] arr = new int[128];
+        for(char c : carr)
+        {
+            arr[(int)c]++;
+        }
+        System.out.println(arr.toString()); // doesn't print as the function doesn't apply 
+        // to primitives
+        // but it is using the toString() method on the array object, which returns a string representation 
+        // of the array object itself, not its contents.
+        // To print the contents of the array, you can use Arrays.toString(arr) method which converts 
+        // the array to a string representation of its contents.
+        System.out.println(Arrays.toString(arr));
+
+        StringBuilder str = new StringBuilder();
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i]!=0)
+                str.append((char)i); // char casting needed otherwise direct number is taken
+        }
+        System.out.println(str);
+        
+    }
+    public static boolean testing12()
+    {
+        String s = "A man, a plan, a canal: Panama";
+        String str = s.toLowerCase().replaceAll("[^a-zA-Z0-9]","");
+        StringBuilder sb = new StringBuilder(str);
+        sb.reverse();
+        if(sb.toString().equals(s))
+            return true;
+        else
+            return false;
+    }
+    public static void stringComparision()
+    {
+        /*
+        To compare strings in Java, we should use the equals method instead of the == operator, 
+        as it only compares object references. Also, the equality check for the empty string 
+        should be done by calling its isEmpty() method.
+        */
+        String[] s = {"ashok","raju"};
+        if(s[0]=="ashok")
+            System.out.println("Comparision worked");
+        else
+            System.out.println("Comparision using == fails");
+
+        if(s[0].equals("ashok"))
+            System.out.println("comparision works");
+        else
+            System.out.println("comparision failed");
+
+        int[] a = {2,3};
+        String key = a[0]+"@"+a[1];
+        System.out.println(key); 
+    }
+
+    /*
+     * 
+     *  \d	Any digits, short of [0-9]
+        \D	Any non-digit, short for [^0-9]
+        \s	Any whitespace character, short for [\t\n\x0B\f\r]
+        \S	Any non-whitespace character, short for [^\s]
+        \w	Any word character, short for [a-zA-Z_0-9]
+        \W	Any non-word character, short for [^\w]
+        \b	A word boundary
+        \B	A non word boundary
+     */
 }
