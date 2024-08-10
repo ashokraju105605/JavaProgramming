@@ -1,6 +1,7 @@
 package JavaSyntax;
 
 import java.util.ArrayDeque;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -15,6 +16,12 @@ public class QueueLearn {
         // Create
         Queue<String> llq = new LinkedList<String>();
         Queue<String> pq = new PriorityQueue<String>(); // Needs a Comparator.
+        Queue<String> pq1 = new PriorityQueue<String>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
         Queue<String> adq = new ArrayDeque<String>();
 
         // Init

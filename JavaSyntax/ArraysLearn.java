@@ -38,7 +38,7 @@ public class ArraysLearn {
 
         // Count
         int len = arr.length;
-        int sum = Arrays.stream(arr).sum();
+        long sum = Arrays.stream(arr).count();
 
         // Search
         boolean found = Arrays.stream(arr1).anyMatch(x -> x == 5);
