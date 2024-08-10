@@ -4,11 +4,11 @@ package LearnBasics;
 // Generic classes
  
 // We use < > to specify Parameter type
-class Test<T> {
+class Test<Tk> {
     // An object of type T is declared
-    T obj;
-    Test(T obj) { this.obj = obj; } // constructor
-    public T getObject() { return this.obj; }
+    Tk obj;
+    Test(Tk obj) { this.obj = obj; } // constructor
+    public Tk getObject() { return this.obj; }
 }
 class Test1<T, U>
 {

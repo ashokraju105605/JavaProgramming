@@ -18,6 +18,9 @@ public class ArraysUsage {
     public static void main(String[] args) {
         System.out.println("Jai Shree Ram");
 
+        // Learn all the below operations on any data structure to be proficient in the language
+        //  Create, Init , Read, Update , Delete , Search, Navigate, BulkCopy, Count, Conversions
+
         int[] arr = new int[5];
         arr[0] = 10;
         int[] arr1 = { 1, 2, 3, 4, 5 };

@@ -44,6 +44,8 @@ public class InputsReading {
 
             //below  not printing to the console as thought
             bw.write("hello world!!");
+            //  the BufferedWriter is not writing to the console because the output stream is not being flushed or closed.
+            bw.flush();
             
         }
         sc.close();
