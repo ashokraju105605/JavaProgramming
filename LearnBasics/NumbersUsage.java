@@ -8,7 +8,7 @@ public class NumbersUsage {
         System.out.println(Integer.MIN_VALUE);
         System.out.println(Integer.MAX_VALUE);
         System.out.println(Float.NEGATIVE_INFINITY);
-        System.out.println(Float.NEGATIVE_INFINITY);
+        System.out.println(Float.POSITIVE_INFINITY);
         System.out.println(Long.MIN_VALUE);
         System.out.println(Long.MAX_VALUE);
         System.out.println(Integer.parseInt("123"));
@@ -19,7 +19,7 @@ public class NumbersUsage {
         System.out.println(Double.MIN_VALUE);
         System.out.println(Double.MAX_VALUE);
 
-        long mod = 1000_000_007;
+        long mod = 1000_000_007;  // often written as 10^9+7 , largest prime number that fits in a 32-bit integer. first 10-digit prime number.
         System.out.println(mod);
         testing();
         FactorialBigInt();

@@ -3,7 +3,77 @@ package LearnBasics;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import Arrays.sortedsub3;
+
 public class HashMapUsage {
+    public static void usage(){
+        // Create, Init, Read, Update, Delete, Count, Search, Iterate, Comparision, Conversion, Specifics.
+
+        // Create
+        HashMap<Integer, String> hm = new HashMap<>();
+        HashMap<Integer, String> hm1 = new HashMap<>();
+
+        // Init
+        hm1.put(101, "Amit");
+        hm1.put(102, "Vijay");
+        hm1.put(103, "Rahul");
+
+        // Read
+        System.out.println(hm1.get(1));
+        System.out.println(hm.getOrDefault(103,"test-----"));
+        
+        // Update
+        hm1.put(101, "Amit");
+        hm1.put(104, "Ravi");
+        System.out.println(hm1.get(104));
+        
+        // Delete
+        hm1.remove(104);
+        System.out.println(hm1.get(104));
+        
+        // Count
+        System.out.println(hm1.size());
+        System.out.println(hm1.keySet().size());
+        System.out.println(hm1.values().size());
+        System.out.println(hm1.entrySet().size());
+        System.out.println(hm1.isEmpty());
+        
+        // Search
+        System.out.println(hm1.containsKey(1));
+        System.out.println(hm1.containsValue("Amit"));
+
+        // Iterate
+        for(Map.Entry<Integer,String> m: hm1.entrySet())
+        {
+            System.out.println(m.getKey()+" "+m.getValue());
+        }
+        // Below is useful when navigation and removal on hashmap is needed concurrently.
+        Iterator<Map.Entry<Integer,String>> it = hm.entrySet().iterator();
+        while(it.hasNext())
+        {
+            Map.Entry<Integer,String> kvp = it.next();
+            //it.remove();
+            System.out.println(kvp.getKey() + " " + kvp.getValue());
+        }
+        hm.forEach( (key,value) -> System.out.println(key + " ### " + value));
+        
+        // Comparision
+        System.out.println(hm1.equals(hm));
+        System.out.println(hm1.hashCode());
+        System.out.println(hm1.toString());
+        
+        // Conversion
+        System.out.println(hm1.entrySet());
+        System.out.println(hm1.keySet());
+        System.out.println(hm1.values());
+        
+        // Specifics
+        System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)));
+        System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a)));
+        
+
+    }
     public static void main(String[] args)
     {
         System.out.println("Jai Shree Ram");
@@ -54,7 +124,9 @@ public class HashMapUsage {
         lhm.put(100,"Amit"); 
         lhm.put(102,"Rahul");     
         lhm.put(101,"Vijay");  
-        System.out.println(lhm.toString());  
+        System.out.println(lhm.toString());
+        System.out.println(lhm.firstEntry());
+        System.out.println(lhm.lastEntry());
         
         
         

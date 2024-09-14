@@ -15,12 +15,72 @@ public class ArraysUsage {
             this.age = a;
         }
     }
+    public static void usage(){
+        // Create, Init, Read, Update, Delete, Count, Search, Iterate, Comparision, Conversion, Specifics.
+
+        // Create
+        int[] arr = {5,4,3,2,1};
+        int[] arr1 = new int[]{1,2,3,4,5}; // cannot give dimention when initialization is provided
+        int[] nums = {1,2,3,4,5};
+        int[] arr2 = arr.clone();
+        int[][] mat = {{0,0,0},{1,1,1}};
+
+        // Init
+        Arrays.fill(arr1, -1);
+        int [][] dp=mat.clone();
+
+        // Read
+        int x = arr[2];
+
+        // Update
+        arr[2] = 8;
+
+        // Delete
+        // not possible as fixed structure container.
+
+        // Count
+        int len = arr.length;
+
+        // Search
+        boolean found = Arrays.stream(arr1).anyMatch(t -> t == 5);
+
+        // Iterate
+        for(int i=0; i<arr.length; i++)
+            System.out.println(arr[i]);
+        for( int a: arr)
+        {
+            System.out.println(a);
+        }
+        Arrays.stream(arr).forEach(System.out::println);
+
+        // Comparision
+        Arrays.equals(arr1, arr2);
+
+        // Conversion
+        String[] str = Arrays.stream(arr1).mapToObj(String::valueOf).toArray(String[]::new);
+        int[] arr3 = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
+
+        //Specifics
+        int[] arr4 = Arrays.copyOfRange(arr1, 1, 3);
+        int[] arr5 = Arrays.copyOf(arr1, arr1.length);
+        Arrays.sort(arr5);
+        Arrays.sort(arr,0,2);
+        List<Integer> arrList = Arrays.stream(arr1).boxed().collect(Collectors.toCollection(ArrayList::new));
+        System.out.println(Arrays.toString(arr));
+        int max = Arrays.stream(arr1).max().getAsInt();
+        int min = Arrays.stream(arr1).min().getAsInt();
+        int sum = Arrays.stream(arr1).sum();
+        Double avg = Arrays.stream(arr1).average().getAsDouble();
+        int index = Arrays.binarySearch(arr1,4);
+        System.out.println(Arrays.deepToString(dp));
+    }
     public static void main(String[] args) {
         System.out.println("Jai Shree Ram");
 
         // Learn all the below operations on any data structure to be proficient in the language
         //  Create, Init , Read, Update , Delete , Search, Navigate, BulkCopy, Count, Conversions
 
+        usage();
         int[] arr = new int[5];
         arr[0] = 10;
         int[] arr1 = { 1, 2, 3, 4, 5 };
