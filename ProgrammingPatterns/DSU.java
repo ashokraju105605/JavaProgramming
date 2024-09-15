@@ -86,7 +86,7 @@ public class DSU{
  }
 
 /*
- * If we combine both optimizations i.e. Path compression and Union by rank then we can achieve almost constant time complexity.
+ * If we combine both optimizations i.e. Path compression and Union by rank then we can achieve amortized constant time complexity.
 
 The final amortized time complexity is calculated to be O(α(n)), where 
 α(n) is inverse Ackermann function which is defined as -
@@ -97,6 +97,8 @@ Applications of Disjoint Set
 It is used to find Cycle in a graph as in Kruskal's algorithm, DSUs are used.
 Checking for connected components in a graph.
 Searching for connected components in an image.
+Finding friends in a social network.
+Set Memebership in a group of sets.
 
 
  */
