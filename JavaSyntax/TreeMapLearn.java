@@ -23,10 +23,10 @@ public class TreeMapLearn {
         // Read
         System.out.println(tm.firstKey());
         System.out.println(tm.lastKey());
-        System.out.println(tm.lowerKey("ashok"));
-        System.out.println(tm.higherKey("ashok"));
-        System.out.println(tm.floorKey("ashok"));
-        System.out.println(tm.ceilingKey("ashok"));
+        System.out.println(tm.lowerKey("ashok")); // returns ananya
+        System.out.println(tm.higherKey("ashok")); // returns raju
+        System.out.println(tm.floorKey("ashok")); // return ashok
+        System.out.println(tm.ceilingKey("ashok")); // resturns ashok.
         System.out.println(tm.firstEntry());
         System.out.println(tm.lastEntry());
         System.out.println(tm.getOrDefault("test", 100));
@@ -78,8 +78,8 @@ public class TreeMapLearn {
          System.out.println(tm.floorKey("ashok1"));
          System.out.println(tm.ceilingKey("ashok1"));
          System.out.println(tm.floorKey("ashok1"));
-         System.out.println(tm.headMap(tm.firstKey()));
-         System.out.println(tm.tailMap(tm.firstKey()));
+         System.out.println(tm.headMap(tm.firstKey())); // Map from start till specified parameter
+         System.out.println(tm.tailMap(tm.firstKey())); // Map from specified parameter till end
          System.out.println(tm.subMap(tm.firstKey(), tm.lastKey()));
          System.out.println(tm.subMap(tm.firstKey(), true, tm.lastKey(), true));
          System.out.println(tm.subMap(tm.firstKey(), false, tm.lastKey(), false));

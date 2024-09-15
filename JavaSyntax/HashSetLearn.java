@@ -26,6 +26,7 @@ public class HashSetLearn {
 
         // Delete
         System.out.println(hs.remove("test"));
+        System.out.println(hs.removeIf(x -> x.equals("test")));
 
         // Count
         System.out.println(hs.size());

@@ -22,8 +22,8 @@ public class BitSetUsage {
         BitSet bs3 = new BitSet();
         bs3 = (BitSet) bs2.clone();
 
-        System.out.println(bs3.cardinality());
-        System.out.println(bs3.size());
+        System.out.println(bs3.cardinality()); // returns number of bits set to true
+        System.out.println(bs3.size()); // return numbers of bits of space.
 
         bs3.set(79);
 

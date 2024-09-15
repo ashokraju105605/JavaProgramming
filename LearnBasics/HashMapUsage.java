@@ -125,8 +125,8 @@ public class HashMapUsage {
         lhm.put(102,"Rahul");     
         lhm.put(101,"Vijay");  
         System.out.println(lhm.toString());
-        System.out.println(lhm.firstEntry());
-        System.out.println(lhm.lastEntry());
+        // System.out.println(lhm.firstEntry()); // doesn't exist
+        // System.out.println(lhm.lastEntry()); // doesn't exist
         
         
         

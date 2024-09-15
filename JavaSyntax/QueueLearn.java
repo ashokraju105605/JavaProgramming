@@ -33,7 +33,7 @@ public class QueueLearn {
         // Read
         System.out.println(pq.peek());
         System.out.println(pq.poll());
-        System.out.println(pq.element());
+        System.out.println(pq.element()); // similar to peek, retrieves but doesn't remove.
 
         // Update
         // nothing like it.

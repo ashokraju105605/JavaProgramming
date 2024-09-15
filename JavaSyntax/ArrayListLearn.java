@@ -31,6 +31,8 @@ public class ArrayListLearn {
         al.addAll(al1);
         al3.add(1);al3.add(2); al3.add(3);
         al4.add(1);al4.add(2); al4.add(3);
+        al4.add(2,23);  // INSERT AT 2, shift the rest to right.
+        // al4[3]; // Can't access like this, though underlying array is used dynamically.
 
         // Read
         Integer element = al.get(1);

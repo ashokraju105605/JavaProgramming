@@ -19,6 +19,7 @@ public class StackLearn {
         // Init
         stack.push("test");
         stack.push("temp");
+        stack.add(1, "ashok");
 
         // Read
         System.out.println(stack.peek());
@@ -38,6 +39,7 @@ public class StackLearn {
         // Search
         System.out.println(stack.contains("raju"));
         System.out.println(stack.search("raju"));
+        System.out.println(stack.indexOf("raju"));
 
         // Iterate
         Iterator<String> it = stack.iterator();

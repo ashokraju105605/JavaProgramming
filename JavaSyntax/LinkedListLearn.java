@@ -23,7 +23,7 @@ public class LinkedListLearn {
         // Init
         ll.addFirst("test");
         ll.addLast("temp");
-        ll.add(2, "Ananya");
+        ll.add(2, "Ananya");  // INSERT and move the rest of the elements.
     
         // Read
         ll.get(2);
@@ -75,6 +75,10 @@ public class LinkedListLearn {
         
         // Specifics
         // LinkedList is a Double Eneded Queue in Java.
+        ll.subList(0, 2);
+        ll.removeIf(x -> x.equals("test"));
+        ll.removeAll(ll2); // Remove all common elements, Subraction
+        ll.retainAll(ll2); // Retain all common elements, Intersection
 
         // Queue Operations
         ll.add("raju");ll.add("gadhiraju");
