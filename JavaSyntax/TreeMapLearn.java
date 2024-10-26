@@ -23,14 +23,30 @@ public class TreeMapLearn {
         // Read
         System.out.println(tm.firstKey());
         System.out.println(tm.lastKey());
-        System.out.println(tm.lowerKey("ashok")); // returns ananya
-        System.out.println(tm.higherKey("ashok")); // returns raju
+        System.out.println(tm.lowerKey("ashok")); // returns ananya , strictly lower
+        System.out.println(tm.higherKey("ashok")); // returns raju , strictly higher
         System.out.println(tm.floorKey("ashok")); // return ashok
         System.out.println(tm.ceilingKey("ashok")); // resturns ashok.
         System.out.println(tm.firstEntry());
         System.out.println(tm.lastEntry());
         System.out.println(tm.getOrDefault("test", 100));
 
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "one");
+        map.put(3, "three");
+        map.put(5, "five");
+
+        System.out.println("floorKey(4): " + map.floorKey(4)); // Output: 3
+        System.out.println("lowerKey(4): " + map.lowerKey(4)); // Output: 3
+
+        System.out.println("floorKey(3): " + map.floorKey(3)); // Output: 3
+        System.out.println("lowerKey(3): " + map.lowerKey(3)); // Output: 1
+        /*
+         * floorKey(4) returns 3 because 3 is the largest key less than or equal to 4.
+         * lowerKey(4) also returns 3 because 3 is the largest key strictly less than 4.
+         * floorKey(3) returns 3 because 3 is equal to 3.
+         * lowerKey(3) returns 1 because 1 is the largest key strictly less than 3.
+         */
         // Update
         System.out.println(tm.put("ashok", 100));
         System.out.println(tm.put("ashok1", 100));

@@ -96,5 +96,13 @@ public class ArrayListLearn {
         list3.stream().mapToInt(num -> Integer.parseInt(num))
         .filter(num -> num % 3 == 0)
         .forEach(System.out::println);
+        al.removeAll(al1); // Removes all elements from this list that are contained in the specified collection (optional operation).
+        al.retainAll(al3); // Retains only the elements in this list that are contained in the specified collection (optional operation).
+        al.clear(); // Removes all of the elements from this list (optional operation).
+        al.addAll(al1); 
+        System.out.println(Collections.max(al1));
+        System.out.println(Collections.min(al1));
+        Collections.fill(al1, -1);
+        Collections.shuffle(al1);
     }
 }

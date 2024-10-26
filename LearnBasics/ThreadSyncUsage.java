@@ -114,7 +114,7 @@ class Task implements Runnable {
 }
 
 class LockExample {
-    private Lock lock = new ReentrantLock(true);
+    private Lock lock = new ReentrantLock(true); // can be relocked on top of lock, and same times unlock needs to happen.
 
     public void sharedResourceMethod() {
         lock.lock(); // acquire the lock
@@ -145,6 +145,7 @@ class Counter extends Thread {
     {
  
         int max = 1_000_00_000;
+        count.getAndSet(2);
  
         // incrementing counter total of max times
         for (int i = 0; i < max; i++) {

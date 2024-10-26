@@ -17,6 +17,7 @@ public class HashMapLearn {
             hm.put("raju", 2);
             hm.put("ananya", 3);
             hm.put("test", 4);
+            hm.put("test", 102); // this would trample existing value, if you want to be careful use putIfAbsent
 
             // Read
             System.out.println(hm.get("ashok"));
@@ -66,6 +67,18 @@ public class HashMapLearn {
             System.out.println(hm.keySet());
             System.out.println(hm.values());
             System.out.println(hm.entrySet());
-            
+            System.out.println(hm.putIfAbsent("test", 23));
+            System.out.println(hm.putIfAbsent("test", 29));
+            hm.merge("ashok",3,Integer::sum);
+            hm.computeIfAbsent("ashok", k -> {
+                return 100;
+            });
+            hm.computeIfPresent("ashok", (k, v) -> {
+                return v+1;
+            });
+            hm.computeIfPresent("ashok", (k, v) -> {
+                return null;
+            });
+            System.out.println(hm.entrySet());
         }                
 }

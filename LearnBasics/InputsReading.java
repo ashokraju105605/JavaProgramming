@@ -23,7 +23,7 @@ public class InputsReading {
         System.out.println(lint);
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int tcases = Integer.parseInt(br.readLine());
+        int tcases = Integer.parseInt(br.readLine().trim());
         while(tcases-- > 0)
         {
             

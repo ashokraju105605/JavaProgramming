@@ -1,5 +1,6 @@
 package LearnBasics;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class NumbersUsage {
@@ -18,6 +19,8 @@ public class NumbersUsage {
         System.out.println(Float.isNaN(123));
         System.out.println(Double.MIN_VALUE);
         System.out.println(Double.MAX_VALUE);
+        System.out.println(Double.NEGATIVE_INFINITY);
+        System.out.println(Double.POSITIVE_INFINITY);
 
         long mod = 1000_000_007;  // often written as 10^9+7 , largest prime number that fits in a 32-bit integer. first 10-digit prime number.
         System.out.println(mod);
@@ -28,6 +31,8 @@ public class NumbersUsage {
         PalindromeCheck();
         ReverseDigits();
         BinStringToDecimal();
+        BigDecimalCheck();
+        NaNTesting();
 
         
         byte b = 2;
@@ -50,6 +55,36 @@ public class NumbersUsage {
             System.out.println("abc Integer is null");         
 
         
+
+    }
+    public static void NaNTesting()
+    {
+        System.out.println(0.0 / 0.0);	  //zero divided by zero
+        System.out.println(Math.sqrt(-1)); //take sqrt of negative number
+        System.out.println(Math.log(8));
+        System.out.println((int)Math.pow(10,9)+7);
+        System.out.println(10.0 % 0);      //taking mod by zero
+        System.out.println(Double.NaN == Double.NaN);
+        System.out.println(Double.NaN == Double.POSITIVE_INFINITY);
+       
+    }
+    public static void BigDecimalCheck()
+    {
+        BigDecimal bd = new BigDecimal("2.0");
+        BigDecimal bd2 = new BigDecimal("1.0");
+        System.out.println(bd.doubleValue());
+        System.out.println(bd.floatValue());
+        System.out.println(bd.intValue());
+        
+        if(bd.add(bd2) == BigDecimal.valueOf(3.0))
+            System.out.println("EQUALS");
+        else
+            System.out.println("NOT EQUALS");
+
+        if(bd.add(bd2).equals(BigDecimal.valueOf(3.0)))
+            System.out.println("EQUALS");
+        else
+            System.out.println("NOT EQUALS");
 
     }
     public static void testing()

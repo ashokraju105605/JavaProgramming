@@ -15,6 +15,7 @@ public class HashMapUsage {
 
         // Init
         hm1.put(101, "Amit");
+        hm1.put(101,"Ammit"); // will trample of the existing key, if you don't want to do it, use putIfAbsent
         hm1.put(102, "Vijay");
         hm1.put(103, "Rahul");
 
@@ -125,6 +126,10 @@ public class HashMapUsage {
         lhm.put(102,"Rahul");     
         lhm.put(101,"Vijay");  
         System.out.println(lhm.toString());
+        System.out.println(lhm.firstEntry().getKey());
+        System.out.println(lhm.lastEntry().getKey());
+        System.out.println(lhm.remove(lhm.firstEntry().getKey()));
+        System.out.println(lhm.firstEntry().getKey());
         // System.out.println(lhm.firstEntry()); // doesn't exist
         // System.out.println(lhm.lastEntry()); // doesn't exist
         

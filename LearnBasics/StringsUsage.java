@@ -129,6 +129,12 @@ public class StringsUsage {
         StringBuilder sb = new StringBuilder();
         sb.append('a');
         sb.append("shok");
+        sb.insert(2,"raju");
+        sb.reverse();
+        sb.indexOf("raju", 1);
+        sb.charAt(2);
+        sb.setCharAt(2, 'a');
+        sb.substring(2,5);
         System.out.println(sb);
     }
     public static void characterUsage()
@@ -231,12 +237,12 @@ public class StringsUsage {
         should be done by calling its isEmpty() method.
         */
         String[] s = {"ashok","raju"};
-        if(s[0]=="ashok")
+        if(s[0]=="ashok")     // WORKED
             System.out.println("Comparision worked");
         else
             System.out.println("Comparision using == fails");
 
-        if(s[0].equals("ashok"))
+        if(s[0].equals("ashok"))  // works.
             System.out.println("comparision works");
         else
             System.out.println("comparision failed");

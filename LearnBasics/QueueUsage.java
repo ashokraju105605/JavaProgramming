@@ -125,6 +125,9 @@ public class QueueUsage {
         Queue<Integer> deq_ll = new LinkedList<Integer>();
         Queue<Integer> deq_arr = new ArrayDeque<Integer>(2);
         Queue<Integer> pq = new PriorityQueue<Integer>(5);
+
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         
         // Returns null
         System.out.println(deq_ll.poll());
