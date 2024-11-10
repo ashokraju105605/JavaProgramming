@@ -14,11 +14,15 @@ public class ArrayListLearn {
         System.out.println(
             "Jai Shree Ram");
 
+        // ArrayList: Uses a dynamic array to store elements. It resizes when the array becomes full by creating a new array and copying elements over.
+        // Insertion/Deletion	O(n) in middle, go with LinkedList if more insertions/deletions. as it is O(1) in LL.
+
         // Create, Init, Read, Update, Delete, Count, Search, Iterate, Comparision, Conversion, Print, Specifics.
 
          // Create
         List<Integer> al = new ArrayList<>();
-        List<Integer> al1 = Arrays.asList(-9, -18, 0, 25, 4);
+        List<Integer> al1 = Arrays.asList(-9, -18, 0, 25, 4); // fixed list but mutable
+        List<Integer> al2 = List.of(1,2,3,4,5); // fixed and immutable.
         List<Integer> number = Arrays.asList(2,3,4,5);
         ArrayList<Integer> al3 = new ArrayList<>();
         ArrayList<Integer> al4 = new ArrayList<>();
@@ -29,13 +33,16 @@ public class ArrayListLearn {
         // Init
         al.add(3);
         al.addAll(al1);
-        al3.add(1);al3.add(2); al3.add(3);
+        al3.addFirst(1);
+        al3.addLast(2); 
         al4.add(1);al4.add(2); al4.add(3);
         al4.add(2,23);  // INSERT AT 2, shift the rest to right.
         // al4[3]; // Can't access like this, though underlying array is used dynamically.
 
         // Read
         Integer element = al.get(1);
+        al.getFirst();
+        al.getLast();
         //al.getOrDefault(5, 0); -- doesn't exist
 
         // Update
@@ -43,6 +50,8 @@ public class ArrayListLearn {
         
         // Delete
         al.remove(5);
+        al.removeFirst();
+        al.removeLast();
         // non existing element removal will be index out of bounds exception
         //Integer removed = al.remove(al.indexOf(3));
 
@@ -76,6 +85,7 @@ public class ArrayListLearn {
 
         // Comparision
         boolean equals = al3.equals(al4);
+        // Collections.equals() -- doesn't have this.
 
         // Conversion
         String alstr = al.toString();
@@ -87,12 +97,15 @@ public class ArrayListLearn {
         al.sort(null);
         al.sort(Comparator.comparing(Integer::intValue).reversed());
         al.sort(Comparator.reverseOrder());
+        System.out.println(al.toArray());
         al.stream().sorted().forEach(System.out::println);
         System.out.println(Arrays.toString(al.toArray()));
         System.out.println(al.isEmpty());
         List<Integer> square = number.stream().map(x -> x*x).collect(Collectors.toList());
         int even = number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
         Collections.sort(al);
+        Collections.binarySearch(al, 3);
+        al.subList(0,3);
         list3.stream().mapToInt(num -> Integer.parseInt(num))
         .filter(num -> num % 3 == 0)
         .forEach(System.out::println);
@@ -103,6 +116,7 @@ public class ArrayListLearn {
         System.out.println(Collections.max(al1));
         System.out.println(Collections.min(al1));
         Collections.fill(al1, -1);
+        // Arrays.fill(al1,-1); -- works only for primitives.
         Collections.shuffle(al1);
     }
 }

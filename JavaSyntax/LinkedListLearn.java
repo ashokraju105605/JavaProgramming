@@ -1,6 +1,7 @@
 package JavaSyntax;
 
 import java.util.ArrayDeque;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -36,10 +37,13 @@ public class LinkedListLearn {
 
         // Remove
         ll.remove("test");
+        ll.removeFirst();
+        ll.removeLast();
 
         // Count
         ll.size();
         ll.stream().count();
+        ll.isEmpty();
 
         // Search
         ll.indexOf("Ashok");
@@ -76,17 +80,18 @@ public class LinkedListLearn {
         // Specifics
         // LinkedList is a Double Eneded Queue in Java.
         ll.subList(0, 2);
-        ll.removeIf(x -> x.equals("test"));
+        ll.removeIf(x -> x.equals("test")); // remove via conditional func
         ll.removeAll(ll2); // Remove all common elements, Subraction
         ll.retainAll(ll2); // Retain all common elements, Intersection
 
         // Queue Operations
-        ll.add("raju");ll.add("gadhiraju");
+        ll.offer("raju"); // adds at the tail.
+        ll.poll(); // removes from first
         // Stack Operations
         ll.addFirst("test");
         ll.addLast("temp");
         ll.offer("Sita"); // add to end of list
-        ll.offerFirst("laxman"); //
+        ll.offerFirst("laxman"); // adds at front of list
 
         // Queue Operations
         ll.poll(); // REMOVE FIRST

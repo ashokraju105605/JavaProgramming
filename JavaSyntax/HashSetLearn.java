@@ -62,7 +62,10 @@ public class HashSetLearn {
 
         // Specifics
         // No specific methods.
-        
+        HashSet<String> hs1 = new HashSet<>();
+        hs1.add("ashok");
+        hs.removeAll(hs1); // Difference A - B.
+        hs.retainAll(hs1); // Intersection A & B.
 
     }
     

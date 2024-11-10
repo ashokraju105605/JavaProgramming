@@ -67,12 +67,22 @@ public class HashMapLearn {
             System.out.println(hm.keySet());
             System.out.println(hm.values());
             System.out.println(hm.entrySet());
+            // putIfAbsent: When you have a straightforward default value to set for missing keys.
             System.out.println(hm.putIfAbsent("test", 23));
             System.out.println(hm.putIfAbsent("test", 29));
+            // combining the existing value with a new value based on a specified logic
+            // convenient method for updating values, especially when working with default values or needing to conditionally combine values.
+            // map.merge(key, newValue, (oldValue, newValue) -> mergeFunction);
+            // BiFunction: A function (oldValue, newValue) -> result that defines how to combine the old and new values.
             hm.merge("ashok",3,Integer::sum);
+            
+            // Unlike putIfAbsent, computeIfAbsent takes a function that generates the value. 
+            // If the key does not exist, it uses the provided function to compute a new value, then inserts this value in the map.
             hm.computeIfAbsent("ashok", k -> {
                 return 100;
             });
+
+            // map.computeIfPresent(key, (k, v) -> newValueFunction);
             hm.computeIfPresent("ashok", (k, v) -> {
                 return v+1;
             });

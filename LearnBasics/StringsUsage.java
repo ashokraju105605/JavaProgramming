@@ -86,6 +86,26 @@ public class StringsUsage {
         stringComparision();
 
     }
+    public static void StringBuilderUsage()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append('a');
+        sb.append("shok");
+        sb.insert(2,"raju");
+        sb.reverse();
+        sb.indexOf("raju", 1);
+        sb.charAt(2);
+        sb.setCharAt(2, 'a');
+        sb.substring(2,5);
+        sb.compareTo(sb);
+        sb.equals(sb);
+        sb.isEmpty();
+        sb.length();
+        sb.substring(2);
+        sb.lastIndexOf("ram", 5);
+        sb.subSequence(0, sb.length());
+        System.out.println(sb);
+    }
 
     public static String FirstNonRepeating(String A)
     {
@@ -124,19 +144,7 @@ public class StringsUsage {
         sb2.reverse();
         System.out.println(sb2.toString());
     }
-    public static void StringBuilderUsage()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append('a');
-        sb.append("shok");
-        sb.insert(2,"raju");
-        sb.reverse();
-        sb.indexOf("raju", 1);
-        sb.charAt(2);
-        sb.setCharAt(2, 'a');
-        sb.substring(2,5);
-        System.out.println(sb);
-    }
+
     public static void characterUsage()
     {
         Character ch = 'a';
