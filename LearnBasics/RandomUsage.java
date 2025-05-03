@@ -19,17 +19,17 @@ public class RandomUsage {
             System.out.println((int)(Math.random()*range) + min);
         }
 
-        System.out.println("Using Randome Class");
+        System.out.println("Using Random Class");
 
         Random r = new Random();
 
-        System.out.println(r.nextInt(10));
+        System.out.println(r.nextInt(10)); // 0 to 10 exclusive
         System.out.println(r.nextInt());
         System.out.println(r.nextBoolean());
         System.out.println(r.nextDouble());
         System.out.println(r.nextFloat());
         System.out.println(r.nextLong());
-        System.out.println(r.nextInt(5, 10));
+        System.out.println(r.nextInt(5, 10)); // 5 to 10 exclusive
 
 
         // Generate Stream of Random things as required.

@@ -25,7 +25,7 @@ public class BitSetUsage {
         System.out.println(bs3.cardinality()); // returns number of bits set to true
         System.out.println(bs3.size()); // return numbers of bits of space.
 
-        bs3.set(79);
+        bs3.set(79); // can set out of index bits as well, which is not the case with arraylist.
 
         System.out.println(bs3.cardinality());
         System.out.println(bs3.size());
@@ -36,11 +36,11 @@ public class BitSetUsage {
 
         bs2.clear();
 
-        System.out.println(bs1.length());
+        System.out.println(bs1.length()); // returns the number of bits set to true in bs1
 
         bs1.xor(bs3);
 
-        System.out.println(bs3.get(1,6));
+        System.out.println(bs3.get(1,6)); // returns the subset of bits from 1 to 6 (exclusive)
 
         bs3.flip(4);
 

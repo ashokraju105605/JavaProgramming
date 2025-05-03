@@ -116,13 +116,13 @@ public class NumbersUsage {
         System.out.println(res.longValue());
     }
     public static void mathLibTests(){
-        double sol = Math.cbrt(8);
+        double sol = Math.cbrt(8); // java.lang methods are loaded by default in runtime.
         double sol1 = Math.sqrt(4);
         int sol2 = Math.abs(-1);
         double sol3 = Math.pow(2,4);
-        double sol4 = Math.ceil(23.2);
+        double sol4 = Math.ceil(23.2); // rounding up the value
         double sol5 = Math.exp(2);
-        double sol6 = Math.floor(23.2);
+        double sol6 = Math.floor(23.2); // rounding down the value
         double sol7 = Math.round(23.5);
         double sol8 = (int)(Math.random()* 10);
     }
@@ -130,7 +130,7 @@ public class NumbersUsage {
     public static void ConvertIntegerToString()
     {
         String s = Integer.toString(53);
-        String s1 = String.valueOf(53);
+        String s1 = String.valueOf(53); // valueOf converts object to string.
 
         StringBuilder sb = new StringBuilder("35");
         sb.reverse();

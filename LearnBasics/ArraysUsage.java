@@ -36,7 +36,7 @@ public class ArraysUsage {
         arr[2] = 8;
 
         // Delete
-        // not possible as fixed structure container.
+        // not possible as fixed structure container. similarly nothing like insert in array.
 
         // Count
         int len = arr.length;

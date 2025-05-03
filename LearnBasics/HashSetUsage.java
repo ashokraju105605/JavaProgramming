@@ -44,6 +44,9 @@ public class HashSetUsage {
         lhs.add("Ashok");
         //lhs.add("ashok");
 
+        System.out.println(lhs.getFirst());
+        System.out.println(lhs.getLast());
+
         System.out.println(lhs.remove("rama"));
 
         System.out.println(lhs);
@@ -67,12 +70,13 @@ public class HashSetUsage {
         System.out.println(sts.first());
         System.out.println(sts.toString());
         System.out.println(sts.last());
-        System.out.println(sts.headSet("sita"));
-        System.out.println(sts.tailSet("rama"));
+        System.out.println(sts.headSet("sita")); // returns all elements < "sita"
+        System.out.println(sts.tailSet("rama")); // returns all elements >= "rama"
+        System.out.println(sts.subSet("raju","sita")); // returns all elements >= "raju" and < "sita"
         System.out.println(sts.subSet("raju","sita").toString());
-        System.out.println(sts.ceiling("sita"));
+        System.out.println(sts.ceiling("sita")); // returns the least element >= "sita"
         System.out.println(sts.ceiling("manu"));
-        System.out.println(sts.floor("manu"));
+        System.out.println(sts.floor("manu")); // returns the greatest element <= "manu"
 
         Addprimitivestohashset();
         check();
@@ -101,8 +105,8 @@ public class HashSetUsage {
         ArrayList<Integer> al2 = new ArrayList<Integer>();
         al2.add(3);al2.add(1);al2.add(2);
 
-        System.out.println(hs.contains(al1)); // false
-        System.out.println(hs.contains(al2)); // true
+        System.out.println(hs.contains(al1)); // false as the order is different.
+        System.out.println(hs.contains(al2)); // true as the order is same.
     }
     public String isSubset( long a1[], long a2[], long n, long m) {
         
@@ -113,7 +117,7 @@ public class HashSetUsage {
         HashSet<Long> hs2 = new HashSet<Long>();
         for(long x:a2)
             hs2.add(x);
-        hs1.retainAll(hs2);
+        hs1.retainAll(hs2); // intersect of 2 sets.
         if(hs1.size()<Math.min(m,n))
             return "No";
         else

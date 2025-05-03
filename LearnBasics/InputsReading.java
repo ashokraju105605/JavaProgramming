@@ -7,19 +7,19 @@ public class InputsReading {
     {
         System.out.println("Jai Shree Ram");
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+        int t = sc.nextInt(); // Read an integer from the console
         int t1 = sc.nextInt();
 
         System.out.println(t);
         System.out.println(t1);
 
-        String s = sc.nextLine();
+        String s = sc.nextLine(); // Read a string from the console (this will read the newline character left by nextInt)
         System.out.println(s);
         
-        String s1 = sc.nextLine();
+        String s1 = sc.nextLine(); // Read another string from the console
         System.out.println(s1);
 
-        Long lint = sc.nextLong();
+        Long lint = sc.nextLong(); // Read a long integer from the console
         System.out.println(lint);
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

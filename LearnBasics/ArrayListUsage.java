@@ -17,15 +17,15 @@ public class ArrayListUsage {
         ArrayList<Integer> al3 = new ArrayList<>();
         ArrayList<Integer> al4 = new ArrayList<>();
         List<String> list3 = Arrays.asList("3", "6", "8", "14", "15");
-        
-
+        //List<int> list4 = new ArrayList<>(); // Commented out as it is incorrect syntax.
 
         // Init
         al.add(3);
         al.addAll(al1);
         al3.add(1);al3.add(2); al3.add(3);
         al4.add(1);al4.add(2); al4.add(3);
-        al4.add(0,3); //insert into middle of dynamic array
+        al4.add(0,3); //insert into middle of dynamic array, 
+        //all elements till end will be shifted to right, costly operation/depends.
 
         // Read
         Integer element = al.get(1);
@@ -35,10 +35,10 @@ public class ArrayListUsage {
         Integer previous = al.set(1, 5);
         
         // Delete
-        al.remove(5);
+        al.remove(5); // all elements till end will be shifted to left, costly operation/depends.
         // non existing element removal will be index out of bounds exception
         //Integer removed = al.remove(al.indexOf(3));
-        al.removeIf(x-> (x==3));    
+        al.removeIf(x-> (x==3)); // remove all occurrences of 3
 
         // Count
         int size = al.size();
@@ -97,7 +97,6 @@ public class ArrayListUsage {
         //testing1();
         testing2();
         arrayStreamReduceTest();
-        ArrayListOperations();
         List<Integer> list1 = Arrays.asList(-9, -18, 0, 25, 4);
         list1.stream().sorted().forEach(System.out::println);
         ArrayList<String> al = new ArrayList<String>();
@@ -365,35 +364,11 @@ public class ArrayListUsage {
         al1.add(1);al1.add(2); al1.add(3);
 
         ArrayList<Integer> al2 = new ArrayList<>();
-        al2.add(1);al2.add(2); al2.add(3);
+        al2.add(1);al2.add(3); al2.add(2);
 
         if(al1.equals(al2))
-            System.out.println("EQUALS");
+            System.out.println("EQUALS"); // if order and elements are same, then equals will return true.
         else
-            System.out.println("NOT EQUALS");
-    }
-
-    public static void ArrayListOperations()
-    {
-        // Create
-        ArrayList<Integer> al = new ArrayList<>();
-        al.add(2);al.add(3);al.add(4);
-
-        // Read element
-        Integer x = al.get(2);
-
-        // update element
-        x = al.set(2,5);
-
-        // insert element
-        al.add(1,4);
-
-        // delete element
-        x = al.remove(0);
-        x = al.remove(al.indexOf(5));al.remove("5");
-
-        // search element
-        boolean exists = al.contains(3);
-        int index = al.indexOf(2);
+            System.out.println("NOT EQUALS"); // if order or elements are not same, then equals will return false.
     }
 }

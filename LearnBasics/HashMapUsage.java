@@ -3,8 +3,6 @@ package LearnBasics;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import Arrays.sortedsub3;
-
 public class HashMapUsage {
     public static void usage(){
         // Create, Init, Read, Update, Delete, Count, Search, Iterate, Comparision, Conversion, Specifics.

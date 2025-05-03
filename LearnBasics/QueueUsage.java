@@ -127,7 +127,7 @@ public class QueueUsage {
         Queue<Integer> pq = new PriorityQueue<Integer>(5);
 
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(); // default is minHeap.
         
         // Returns null
         System.out.println(deq_ll.poll());
