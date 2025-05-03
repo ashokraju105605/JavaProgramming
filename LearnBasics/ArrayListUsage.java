@@ -25,7 +25,7 @@ public class ArrayListUsage {
         al.addAll(al1);
         al3.add(1);al3.add(2); al3.add(3);
         al4.add(1);al4.add(2); al4.add(3);
-        al4.add(0,3);
+        al4.add(0,3); //insert into middle of dynamic array
 
         // Read
         Integer element = al.get(1);
