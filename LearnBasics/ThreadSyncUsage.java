@@ -34,9 +34,9 @@ public class ThreadSyncUsage {
                 System.out.println(i);
             }
         };
-        Thread t3 = new Thread(task);
-        t3.start();
-        t3.join();
+        Thread t = new Thread(task);
+        t.start();
+        t.join();
 
     }
 }
