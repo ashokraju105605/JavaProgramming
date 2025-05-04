@@ -15,22 +15,22 @@ public class ThreadSyncUsage {
         new Thread(){  public void run(){  Table.printTable(100); } }.start();  
         new Thread( () -> {Table.printTable(1000);} ).start();
         
-        Table1 obj = new Table1();//only one object    
-        MyThread1 t1=new MyThread1(obj);    
-        MyThread2 t2=new MyThread2(obj);    
-        t1.start();    
-        t2.start();
+        Table1 objt1 = new Table1();//only one object    
+        MyThread5 t5=new MyThread5(objt1);    
+        MyThread3 t3=new MyThread3(objt1);    
+        t5.start();    
+        t3.start();
 /* */        
         Semaphore semaphore = new Semaphore(3); // Creates a Semaphore with 3 permits
         Thread[] threads = new Thread[5];
         for (int i = 0; i < 5; i++) {
-            threads[i] = new Thread(new Task(semaphore, i));
+            threads[i] = new Thread(new Work(semaphore, i));
             threads[i].start();
         }
 
         
         Runnable task = () -> {
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 10; i++) {
                 System.out.println(i);
             }
         };
@@ -41,7 +41,11 @@ public class ThreadSyncUsage {
     }
 }
 class Table{  
-  
+    // synchronized static method works on class level, not on object level.
+    // ensure thread safety by locking the class-level monitor, rather than an instance-level lock.
+    // Java locks the class (ClassName.class) instead of a specific object instance.
+    // Other static methods in the same class cannot execute while one is locked.
+    // Avoid overusing synchronized static, as it locks the entire class.
     synchronized static  void printTable(int n){  
       for(int i=1;i<=10;i++){  
         System.out.println(n*i);  
@@ -54,7 +58,8 @@ class Table{
 
 class Table1  
 {      
- void printTable(int n){    
+ void printTable(int n){
+    // synchronized(this) is used to lock the current object for any other thread.    
    synchronized(this){//synchronized block    
      for(int i=1;i<=5;i++){    
       System.out.println(n*i);    
@@ -65,9 +70,17 @@ class Table1
    }    
  }//end of the method    
 }
-class MyThread1 extends Thread{    
+
+// SEMAPHORE implementation.
+// MUTEX IS LOCKING , SEMAPHORE IS SIGNALLING.
+// The class itself becomes a thread by inheriting the Thread class. 
+// ✔ You override the run() method to define thread behavior. 
+// ✔ Allows direct access to thread methods (start(), sleep(), etc.).
+// ✔ Simpler for small tasks or when you don't need to share the thread class with other classes.
+// ✔ Less flexible for thread management (e.g., using thread pools).
+class MyThread5 extends Thread{    
     Table1 t;    
-    MyThread1(Table1 t){    
+    MyThread5(Table1 t){    
         this.t=t;    
     }    
     public void run(){    
@@ -76,12 +89,9 @@ class MyThread1 extends Thread{
         
 }    
 
-// SEMAPHORE implementation.
-// MUTEX IS LOCKING , SEMAPHORE IS SIGNALLING.
-
-class MyThread2 extends Thread{    
+class MyThread3 extends Thread{    
     Table1 t;    
-    MyThread2(Table1 t){    
+    MyThread3(Table1 t){    
         this.t=t;    
     }    
     public void run(){    
@@ -89,11 +99,19 @@ class MyThread2 extends Thread{
     }    
 }
 
-class Task implements Runnable {
+// The class implements Runnable and defines the run() method. 
+// ✔ You create a Thread object and pass an instance of the class implementing Runnable. 
+// ✔ Allows better separation of concerns—you can extend another class while running threads.
+// ✔ More flexible for thread management (e.g., using thread pools).
+// ✔ You can share the same instance of the Runnable class among multiple threads.
+// ✔ You can pass parameters to the constructor of the Runnable class.
+// ✔ You can implement multiple interfaces in the class.
+class Work implements Runnable {
+    // This class implements the Runnable interface, allowing it to be run by a thread.
     private Semaphore semaphore;
     private int id;
 
-    public Task(Semaphore semaphore, int id) {
+    public Work(Semaphore semaphore, int id) {
         this.semaphore = semaphore;
         this.id = id;
     }
@@ -130,13 +148,13 @@ class LockExample {
 
 class Counter extends Thread {
  
-    // Atomic counter Variable
-    AtomicInteger count;
+    // Atomic counter Variable  
+    AtomicInteger atmInt; // AtomicInteger is a class that provides an integer value that may be updated atomically.
  
     // Constructor of class
     Counter()
     {
-        count = new AtomicInteger();
+        atmInt = new AtomicInteger();
     }
  
     // method which would be called upon
@@ -145,12 +163,13 @@ class Counter extends Thread {
     {
  
         int max = 1_000_00_000;
-        count.getAndSet(2);
+        atmInt.getAndSet(2); // set the initial value to 2
  
         // incrementing counter total of max times
         for (int i = 0; i < max; i++) {
-            count.addAndGet(1);
+            atmInt.addAndGet(1); // increment the counter by 1
         }
+        System.out.println("Final count value: " + atmInt.get()); // print the final count value
     }
 }
 
