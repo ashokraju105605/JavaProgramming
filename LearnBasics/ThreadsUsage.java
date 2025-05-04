@@ -6,17 +6,19 @@ public class ThreadsUsage {
     public static void main(String[] args)
     {
         System.out.println("Jai Shree Ram");
-        Multi thr = new Multi();
+        ThreadEx thr = new ThreadEx();
         thr.run(); // fine, but does not start a seperate call stack. runs in the context of main threads stack.
         // there is no context-switching because here t1 and t2 will be treated as normal object not thread object.
 
-        Multi thr1 = new Multi();
-        thr1.start();
+        ThreadEx thr1 = new ThreadEx();   
+        thr1.start(); // starts a new thread and calls the run method in that thread.
+        // The run method is executed in a separate call stack, allowing for context-switching between threads.
 
-        Multi2 m1 = new Multi2();
-        Thread thr2 = new Thread(m1);
+        RunnableTsk rTsk1 = new RunnableTsk(); 
+        Thread thr2 = new Thread(rTsk1); // Thread is created but not started yet.
+        // The thread is in the NEW state.
         thr2.start();
-        new Thread(m1).start();
+        new Thread(rTsk1).start();
         try {
             thr2.join(1000);
         } catch (InterruptedException e) {
@@ -27,7 +29,7 @@ public class ThreadsUsage {
 
         threadDetails();
 
-        new Thread(new SleepThr()).start();
+        new Thread(new SleepThr()).start(); // generally runnable task is passed to the thread constructor.
     }
     public static void threadDetails()
     {
@@ -49,14 +51,14 @@ public class ThreadsUsage {
         System.out.println(thr3.getState().name());
     }
 }
-class Multi extends Thread
+class ThreadEx extends Thread
 {
     public void run()
     {
-        System.out.println("Thread from Multi is running  " + Math.random());
+        System.out.println("Thread from ThreadEx is running  " + Math.random());
     }
 }
-class Multi2 implements Runnable
+class RunnableTsk implements Runnable
 {
     public void run()
     {
