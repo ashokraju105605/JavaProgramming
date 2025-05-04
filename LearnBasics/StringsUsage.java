@@ -10,7 +10,7 @@ public class StringsUsage {
         System.out.println("Jai Shree Ram");
         String s = "Jai Shree Ram";
         System.out.println(s.length());
-        System.out.println(s.substring(4, 9)); // java picks always given -1 for the end indexes.
+        System.out.println(s.substring(4, 9)); // java picks always given -1 for the end indexes(exclusive).
         System.out.println(s.substring(10));
         System.out.println(s.substring(3, 10).trim()); // start inclusive, end exclusive as per java convention.
         System.out.println(s.toLowerCase());

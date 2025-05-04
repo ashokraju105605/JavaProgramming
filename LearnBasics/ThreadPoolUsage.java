@@ -6,15 +6,17 @@ import java.util.concurrent.Executors;
 public class ThreadPoolUsage {
     public static void main(String[] args) {
         // Create a thread pool with 5 threads
+        // The thread pool will manage a fixed number of threads to execute tasks concurrently.
+        // The number of threads in the pool is fixed and will not change dynamically.
         ExecutorService executor = Executors.newFixedThreadPool(5);
 
         // Submit 10 tasks to the thread pool
         for (int i = 0; i < 10; i++) {
-            executor.submit(new Task(i));
+            executor.submit(new RunnableTsk(i));
         }
 
         for (int i = 0; i < 10; i++) {  
-            Runnable worker = new Task(i+10);  
+            Runnable worker = new RunnableTsk(i+10);  
             executor.execute(worker);//calling execute method of ExecutorService  
         }
 
@@ -22,10 +24,10 @@ public class ThreadPoolUsage {
         executor.shutdown();
     }
 
-    static class Task implements Runnable {
+    static class RunnableTsk implements Runnable {
         private int taskId;
 
-        public Task(int id) {
+        public RunnableTsk(int id) {
             this.taskId = id;
         }
 

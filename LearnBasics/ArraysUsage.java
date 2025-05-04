@@ -22,7 +22,8 @@ public class ArraysUsage {
         int[] arr = {5,4,3,2,1};
         int[] arr1 = new int[]{1,2,3,4,5}; // cannot give dimention when initialization is provided
         int[] nums = {1,2,3,4,5};
-        int[] arr2 = arr.clone();
+        int[] arr2 = arr.clone(); // shallow copy, not deep copy.
+        int[] arr3 = new int[5]; // default values are 0 for int, false for boolean, null for object.
         int[][] mat = {{0,0,0},{1,1,1}};
 
         // Init
@@ -58,7 +59,7 @@ public class ArraysUsage {
 
         // Conversion
         String[] str = Arrays.stream(arr1).mapToObj(String::valueOf).toArray(String[]::new);
-        int[] arr3 = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
+        int[] arr7 = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
 
         //Specifics
         int[] arr4 = Arrays.copyOfRange(arr1, 1, 3);
@@ -157,7 +158,10 @@ public class ArraysUsage {
         String s = String.format("%s", String.join(", ", animals));
         System.out.println(s);
 
-        int[] t = Arrays.copyOf(arr, 10);
+        int[] t = Arrays.copyOf(arr, 10); // copyOf will create a new array of size 10 and copy the elements of arr to it.
+        // The new array will be initialized with 0s for the remaining elements.
+        // Best Use Case: When you need to resize an array (increase or decrease length).
+
         System.out.println(Arrays.toString(t));
 
         //int[] t = Arrays.copyOfRange(arr,0,arr.length);
@@ -204,9 +208,15 @@ public class ArraysUsage {
         int[] arr1 = { 1, 2, 3, 4, 5 };
         int[] arr2 = new int[arr1.length];
         System.arraycopy(arr1, 0, arr2, 0, arr1.length);
+        // System arrayCopy method is used to copy the elements of one array to another.
+        // Does not create a new array—modifies the existing destination array.
 
         // OPTION 2
         int[] msis = Arrays.copyOfRange(arr1, 0, arr1.length);
+        // This method creates a new array that is a copy of the specified range of the original array.
+        // Automatically resizes the output array.
+        // ✔ Best for: Creating new subarrays without modifying the original.
+        // The new array does not resize beyond the selected elements.
     }
     public static void findMax()
     {

@@ -70,6 +70,8 @@ public class NumbersUsage {
     }
     public static void BigDecimalCheck()
     {
+        // BigDecimal is suggested for precise calculations, especially in financial applications.
+        // to avoid 0.7-0.2 = 0.5, which is not equal to 0.5.
         BigDecimal bd = new BigDecimal("2.0");
         BigDecimal bd2 = new BigDecimal("1.0");
         System.out.println(bd.doubleValue());
@@ -89,12 +91,18 @@ public class NumbersUsage {
     }
     public static void testing()
     {
-        System.out.println(Integer.parseInt("123"));
+        Integer intObj = 5; // Integer is a wrapper class for int primitive type.
+        System.out.println(Integer.parseInt("123")); // parseXxx static methods parses strings to primitive data types.
+        // Returns a primitive int. Throws NumberFormatException if the string is not a valid number.
+
         System.out.println(Integer.parseInt("101",2));
         System.out.println(Integer.toBinaryString(5));
         System.out.println(Integer.bitCount(5));
-        System.out.println(Integer.valueOf("23"));
+        System.out.println(Integer.valueOf("23")); // valueOf provided by wrapper classes, used to convert primitive types/strings to corresponding wrapper class object.
+        // Returns an Integer object (wrapper class). Internally calls parseInt(s) but returns an Integer.
+        
         System.out.println(Integer.valueOf(25));
+        System.out.println(intObj.intValue()); // *primitive*Value() wrapper object methods convert wrapper class object to primitive type.
         System.out.println(Integer.toString(23));
         System.out.println(Integer.compare(2,3));
         System.out.println(Integer.compare(3,3));

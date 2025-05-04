@@ -29,11 +29,11 @@ public class QueueUsage {
             System.out.println(temp);
         }
 
-        System.out.println(pq.peek());
-        System.out.println(pq.remove());
-        System.out.println(pq.poll());
-        System.out.println(pq.element());
-        System.out.println(pq.offer("rama"));
+        System.out.println(pq.peek()); // returns the head of the queue, throws exception if empty.
+        System.out.println(pq.remove()); // returns the head of the queue, throws exception if empty.
+        System.out.println(pq.poll()); // poll() will return null if queue is empty.
+        System.out.println(pq.element()); // returns the head of the queue, throws exception if empty.
+        System.out.println(pq.offer("rama")); // returns true if added successfully at the end of the queue.
         System.out.println(pq.isEmpty());
         System.out.println(pq);
 
@@ -64,22 +64,23 @@ public class QueueUsage {
 
         ArrayList<Book> al = new ArrayList<Book>();
         al.add(b1);al.add(b2);al.add(b3);
-        Collections.sort(al, new BookComparator());
+        Collections.sort(al, new BookComparator()); // sort the list using comparator.
+        // Collections.sort(al); // sort the list using comparable.
         al.sort(new BookComparator());
         
-        Comparator<Book> comp = Comparator.comparing((Book b)-> b.id);
+        Comparator<Book> comp = Comparator.comparing((Book b)-> b.id); // lambda comparator
         Collections.sort(al,comp);
 
-        Collections.sort(al,(Book b, Book bb)-> b.id-bb.id);
+        Collections.sort(al,(Book b, Book bb)-> b.id-bb.id); // sort the list using lambda expression
 
         System.out.println();
         for(Book b:al)
         System.out.println(b.id+" "+b.name+" "+b.author+" "+b.publisher+" "+b.quantity);
 
         // DOUBLE ENDED QUEUE with Linked List
-        Queue<String> llq = new LinkedList<>();
-        llq.add("ashok");
-        llq.offer("raju");
+        Queue<String> llq = new LinkedList<>(); // LinkedList implements Queue interface.
+        llq.add("ashok"); // add() will throw exception if queue is full.
+        llq.offer("raju"); // offer() will return false if queue is full.
         System.out.println( llq.poll());
         System.out.println(llq);
         System.out.println(llq.peek());
@@ -87,7 +88,10 @@ public class QueueUsage {
         testing();
     }
 
-    static class Book implements Comparable<Book>{  
+    static class Book implements Comparable<Book>{
+        // Comparable has to implement compareTo method.
+        // It takes one object and returns an int value.  
+        // It is used to sort the objects in the collection when no explicit comparator is provided.
         int id;  
         String name,author,publisher;  
         int quantity;  
@@ -110,6 +114,9 @@ public class QueueUsage {
         
     }
     static class BookComparator implements Comparator<Book>{  
+        // Comparator has to implement compare method.
+        // It takes two objects and returns an int value.
+        // create a new comparator object and pass it to the sort method.
         public int compare(Book b1,Book b2){  
           
         if(b1.id<b2.id)  
@@ -124,13 +131,14 @@ public class QueueUsage {
     {
         Queue<Integer> deq_ll = new LinkedList<Integer>();
         Queue<Integer> deq_arr = new ArrayDeque<Integer>(2);
-        Queue<Integer> pq = new PriorityQueue<Integer>(5);
+        Queue<Integer> pq = new PriorityQueue<Integer>(5); // minHeap with size 5.
 
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(); // default is minHeap.
         
-        // Returns null
+        // Returns null if no elements are present.
         System.out.println(deq_ll.poll());
+
         // Returns java.util.NoSuchElementException Exception.
         //System.out.println(deq_ll.remove());
 
