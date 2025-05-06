@@ -18,6 +18,8 @@ public class ArrayListUsage {
         ArrayList<Integer> al4 = new ArrayList<>();
         List<String> list3 = Arrays.asList("3", "6", "8", "14", "15");
         //List<int> list4 = new ArrayList<>(); // Commented out as it is incorrect syntax.
+        // because collections store objects, and primitive types are not objects.
+        // Java generics (<>) only accept reference types, meaning List<int> is invalid.
 
         // Init
         al.add(3);
@@ -78,6 +80,7 @@ public class ArrayListUsage {
         al.sort(null);
         al.sort(Comparator.comparing(Integer::intValue).reversed());
         al.sort(Comparator.reverseOrder());
+        al.sort(Collections.reverseOrder()); // both does the same thing.
         al.stream().sorted().forEach(System.out::println);
         System.out.println(Arrays.toString(al.toArray()));
         System.out.println(al.isEmpty());
