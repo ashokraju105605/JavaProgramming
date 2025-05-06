@@ -80,7 +80,7 @@ public class ArrayListUsage {
         al.sort(null);
         al.sort(Comparator.comparing(Integer::intValue).reversed());
         al.sort(Comparator.reverseOrder());
-        al.sort(Collections.reverseOrder()); // both does the same thing.
+        al.sort(Collections.reverseOrder()); // both does the same thing. internally calls comparator.reverseOrder()
         al.stream().sorted().forEach(System.out::println);
         System.out.println(Arrays.toString(al.toArray()));
         System.out.println(al.isEmpty());
