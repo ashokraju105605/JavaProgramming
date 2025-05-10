@@ -302,4 +302,27 @@ public class ArraysUsage {
         // Knight Directions.
         int[][] KD = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
     }
+    public static void arraySorting()
+    {
+        int[][] points = {{1,2},{3,4},{5,6}};
+
+        //technique 1 -- SAFE
+        Arrays.sort(points , (o1,o2) -> {
+            if(o1[1]==o2[1]) return 0;
+            if(o1[1]>o2[1]) return 1;
+            else return -1;
+        });
+
+        //technique 2 - UNSAFE, INTEGER OVERFLOW
+        // If the values of o1[1] and o2[1] are large enough, 
+        // their difference could exceed the range of a 32-bit signed integer (int), which is [-2^31, 2^31 - 1]. 
+        // This would result in an overflow, leading to incorrect sorting behavior.
+        Arrays.sort(points , (o1,o2) -> o1[1]-o2[1]);
+
+        //technique 3 -- SAFE
+        //method internally handles comparisons without performing arithmetic operations that could overflow.
+        Arrays.sort(points, (o1, o2) -> Integer.compare(o1[1], o2[1]));
+
+
+    }
 }

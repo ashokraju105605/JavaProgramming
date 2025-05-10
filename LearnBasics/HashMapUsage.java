@@ -10,6 +10,7 @@ public class HashMapUsage {
         // Create
         HashMap<Integer, String> hm = new HashMap<>();
         HashMap<Integer, String> hm1 = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
 
         // Init
         hm1.put(101, "Amit");
@@ -24,6 +25,20 @@ public class HashMapUsage {
         // Update
         hm1.put(101, "Amit");
         hm1.put(104, "Ravi");
+        hm1.merge(105, "newValue", (oldValue, newValue) -> oldValue + newValue); //newValue
+        hm1.merge(103, "ashok", String::concat); //Rahulashok.
+        // merge is used to update the value of the key if it exists, else it will add the key-value pair.
+        // if values were integers then you can use Integer::sum as well. for merging values if key already exists.
+        // Using put() + getOrDefault()
+        map.put("apple", map.getOrDefault("apple", 0) + 1);
+
+        // Using merge() with Integer::sum
+        map.merge("banana", 1, Integer::sum);
+
+        System.out.println(map); // Output: {apple=1, banana=1}
+        // ✔ More readable → Directly expresses intent (sum operation). 
+        // ✔ Safer → Avoids potential NullPointerException if getOrDefault() fails. 
+        // ✔ Built-in handling → No need for a manual conditional check.
         System.out.println(hm1.get(104));
         
         // Delete
@@ -76,7 +91,7 @@ public class HashMapUsage {
     public static void main(String[] args)
     {
         System.out.println("Jai Shree Ram");
-        
+        usage();
         HashMap<Integer,String> hm=new HashMap<Integer,String>();    
 
         System.out.println("Initial list of elements: "+hm);  
