@@ -80,6 +80,7 @@ public class HashSetUsage {
 
         Addprimitivestohashset();
         check();
+        customObjectSetUsage();
         
     }
     public static void Addprimitivestohashset()
@@ -122,5 +123,52 @@ public class HashSetUsage {
             return "No";
         else
             return "Yes";
+    }
+    static class Person {
+        String name;
+        Person(String name) { this.name = name; }
+    }
+
+    static class Person1 {
+        String name;
+        Person1(String name) { this.name = name; }
+        
+        // ✔ Ensures that objects are compared based on their content, not memory references.
+        // ✔ Set uses equals() to avoid duplicate elements.
+        // ✔ Map uses equals() to compare keys and check for existing entries.
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof Person1)) return false;
+            Person1 p = (Person1) obj;
+            return name.equals(p.name);
+        }
+        
+        // ✔ HashMap, HashSet, and HashTable use hashing to optimize storage and lookup.
+        // ✔ Hashing is based on the hashCode() method, which should be consistent with equals().
+        // hashcode() is used to determine the bucket location in the hash table.
+        // ✔ If two objects are equal (equals() returns true), they must have the same hash code.
+        // ✔ If two objects have the same hash code, they are not necessarily equal (hash collision).
+        @Override
+        public int hashCode() {
+            return name.hashCode(); // Hash based on name value
+        }
+
+    }
+    public static void customObjectSetUsage()
+    {
+        // Problem: Since equals() isn’t overridden, Java checks object references instead of values, leading to duplicates in Set.
+        Set<Person> people = new HashSet<>();
+        people.add(new Person("Alice"));
+        people.add(new Person("Alice")); // Duplicate?
+        
+        System.out.println(people.size()); // ❌ Expected: 1, Got: 2 (incorrect!)
+
+        Set<Person1> people1 = new HashSet<>();
+        people1.add(new Person1("Alice"));
+        people1.add(new Person1("Alice")); // Duplicate?
+        
+        System.out.println(people1.size()); // ✔ Expected: 1, Got: 1 (correct!)
+        System.out.println(people1.contains(new Person1("Alice")));
     }
 }
