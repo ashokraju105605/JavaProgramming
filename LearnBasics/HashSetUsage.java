@@ -124,14 +124,14 @@ public class HashSetUsage {
         else
             return "Yes";
     }
-    static class Person {
-        String name;
-        Person(String name) { this.name = name; }
-    }
-
     static class Person1 {
         String name;
         Person1(String name) { this.name = name; }
+    }
+
+    static class Person {
+        String name;
+        Person(String name) { this.name = name; }
         
         // ✔ Ensures that objects are compared based on their content, not memory references.
         // ✔ Set uses equals() to avoid duplicate elements.
@@ -139,8 +139,8 @@ public class HashSetUsage {
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
-            if (!(obj instanceof Person1)) return false;
-            Person1 p = (Person1) obj;
+            if (!(obj instanceof Person)) return false;
+            Person p = (Person) obj;
             return name.equals(p.name);
         }
         
@@ -157,18 +157,24 @@ public class HashSetUsage {
     }
     public static void customObjectSetUsage()
     {
+        // ✔ Sets (HashSet) → Used to check whether an element already exists, ensuring uniqueness
         // Problem: Since equals() isn’t overridden, Java checks object references instead of values, leading to duplicates in Set.
-        Set<Person> people = new HashSet<>();
-        people.add(new Person("Alice"));
-        people.add(new Person("Alice")); // Duplicate?
-        
-        System.out.println(people.size()); // ❌ Expected: 1, Got: 2 (incorrect!)
-
         Set<Person1> people1 = new HashSet<>();
         people1.add(new Person1("Alice"));
         people1.add(new Person1("Alice")); // Duplicate?
         
-        System.out.println(people1.size()); // ✔ Expected: 1, Got: 1 (correct!)
-        System.out.println(people1.contains(new Person1("Alice")));
+        System.out.println(people1.size()); // ❌ Expected: 1, Got: 2 (incorrect!)
+
+        Set<Person> people = new HashSet<>();
+        people.add(new Person("Alice"));
+        people.add(new Person("Alice")); // Duplicate?
+        
+        System.out.println(people.size()); // ✔ Expected: 1, Got: 1 (correct!)
+        System.out.println(people.contains(new Person("Alice")));
+
+        // ✔ Maps (HashMap, Hashtable) → Used to determine the bucket location for storing/retrieving keys efficiently.
+        Map<Person, Integer> map = new HashMap<>();
+        map.put(new Person("Alice"), 25);  // Uses hashCode() for bucket placement
+        map.put(new Person("Bob"), 30);
     }
 }
