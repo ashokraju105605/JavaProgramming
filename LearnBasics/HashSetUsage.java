@@ -176,5 +176,11 @@ public class HashSetUsage {
         Map<Person, Integer> map = new HashMap<>();
         map.put(new Person("Alice"), 25);  // Uses hashCode() for bucket placement
         map.put(new Person("Bob"), 30);
+
+        Integer num1 = 10;
+        Integer num2 = 10;
+        System.out.println(num1 == num2); // true, as both point to the same object in the Integer cache
+        System.out.println(num1.equals(num2)); // true, as values are the same
+        System.out.println(num1.hashCode() + " " + num2.hashCode()); // true, as both have the same hash code,  hashcode = 10. same as intValue
     }
 }
