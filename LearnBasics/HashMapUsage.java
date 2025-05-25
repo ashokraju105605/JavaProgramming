@@ -31,9 +31,11 @@ public class HashMapUsage {
         hm1.merge(103, "ashok", String::concat); //Rahulashok.
         // merge is used to update the value of the key if it exists, else it will add the key-value pair.
         // if values were integers then you can use Integer::sum as well. for merging values if key already exists.
-        
+
         // Using put() + getOrDefault()
         map.put("apple", map.getOrDefault("apple", 0) + 1);
+        map.merge("banana", 1, Integer::sum);// Adds 1 to the value at key "banana", creating a new entry if it doesn't exist.
+        // better than using getOrDefault() + put() as it is more readable and concise.
         
         map2.computeIfAbsent(22, k -> new ArrayList<>()).add("value"); // Adds "value" to the list at key 22, creating a new list if it doesn't exist.
         // this is very useful when you want to add a value to a list at a specific key in the map. also creates a new list if the key doesn't exist.
