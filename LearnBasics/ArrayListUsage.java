@@ -291,7 +291,7 @@ public class ArrayListUsage {
         alll.add(list);
 
         ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,2,3));
-        System.out.println(alll.contains(list1));
+        System.out.println(alll.contains(list1)); // true, as the elements are same in the list.
 
         System.out.println(alll.size());
 

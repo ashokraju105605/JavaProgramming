@@ -75,8 +75,10 @@ public class HashSetUsage {
         System.out.println(sts.subSet("raju","sita")); // returns all elements >= "raju" and < "sita"
         System.out.println(sts.subSet("raju","sita").toString());
         System.out.println(sts.ceiling("sita")); // returns the least element >= "sita"
-        System.out.println(sts.ceiling("manu"));
+        System.out.println(sts.higher("sita")); // returns the least element > "sita"
         System.out.println(sts.floor("manu")); // returns the greatest element <= "manu"
+        System.out.println(sts.lower("manu")); // returns the greatest element < "manu"
+
 
         Addprimitivestohashset();
         check();

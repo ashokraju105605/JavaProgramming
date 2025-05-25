@@ -11,6 +11,8 @@ public class HashMapUsage {
         HashMap<Integer, String> hm = new HashMap<>();
         HashMap<Integer, String> hm1 = new HashMap<>();
         Map<String, Integer> map = new HashMap<>();
+        Map<Integer, ArrayList<String>> map2 = new HashMap<>();
+        // HashMap is not synchronized, if you want to use it in multi-threaded environment, use ConcurrentHashMap.
 
         // Init
         hm1.put(101, "Amit");
@@ -29,8 +31,14 @@ public class HashMapUsage {
         hm1.merge(103, "ashok", String::concat); //Rahulashok.
         // merge is used to update the value of the key if it exists, else it will add the key-value pair.
         // if values were integers then you can use Integer::sum as well. for merging values if key already exists.
+        
         // Using put() + getOrDefault()
         map.put("apple", map.getOrDefault("apple", 0) + 1);
+        
+        map2.computeIfAbsent(22, k -> new ArrayList<>()).add("value"); // Adds "value" to the list at key 22, creating a new list if it doesn't exist.
+        // this is very useful when you want to add a value to a list at a specific key in the map. also creates a new list if the key doesn't exist.
+        // if key exists, it will add the value to the existing list, else it will create a new list and add the value to it.
+        // no need to check if the key exists or not, avoids manual initialization of the list, creates/updates seamlessly.
 
         // Using merge() with Integer::sum
         map.merge("banana", 1, Integer::sum);

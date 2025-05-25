@@ -62,8 +62,9 @@ public class ArraysUsage {
         int[] arr7 = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
 
         //Specifics
-        int[] arr4 = Arrays.copyOfRange(arr1, 1, 3);
-        int[] arr5 = Arrays.copyOf(arr1, arr1.length);
+        int[] arr4 = Arrays.copyOfRange(arr1, 1, 3); // creates a new array with elements from index 1 to 2 (exclusive of 3) of arr1.
+        int[] arr5 = Arrays.copyOf(arr1, arr1.length); // creates a new array with the same elements as arr1.
+        // will fill the remaining elements with 0s if the new array is larger than the original.
         Arrays.sort(arr5);
         Arrays.sort(arr,0,2);
         List<Integer> arrList = Arrays.stream(arr1).boxed().collect(Collectors.toCollection(ArrayList::new));
@@ -92,17 +93,17 @@ public class ArraysUsage {
         int sum = Arrays.stream(nums).sum();
         System.out.println(sum);
 
-        Collections.reverse(Arrays.asList(arr1));
+        Collections.reverse(Arrays.asList(arr1)); // doesn't reverse, as it is primitive type array.
         System.out.println(Arrays.asList(arr1)); // doesn't reverse
 
         List<Integer> arrList = Arrays.stream(arr1).boxed().collect(Collectors.toCollection(ArrayList::new));
-        Collections.reverse(arrList); // works
+        Collections.reverse(arrList); // works , reverses the ArrayList.
 
         String[] str = {"ashok","raju","gadhiraju"};
         Collections.reverse(Arrays.asList(str));
         System.out.println(String.join(" ",str)); //works.
 
-        Collections.reverse(Arrays.asList(arr2));
+        Collections.reverse(Arrays.asList(arr2)); 
         System.out.println(Arrays.asList(arr2)); // REVERSES, works
         // Below throwing exception
         //Integer[] subarr1 = Arrays.asList(arr).subList(2, 4).toArray(new Integer[0]);
@@ -249,7 +250,7 @@ public class ArraysUsage {
 
         Integer[] arr = {1, 2, 3, 4, 5};
         Collections.reverse(Arrays.asList(arr));
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr)); // works with Integer object type.
     }
     public static void cloneMat()
     {
