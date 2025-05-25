@@ -12,7 +12,8 @@ public class ArrayListUsage {
     public static void usage(){
         // Create
         List<Integer> al = new ArrayList<>();
-        List<Integer> al1 = Arrays.asList(-9, -18, 0, 25, 4);
+        List<Integer> al1 = Arrays.asList(-9, -18, 0, 25, 4); // Immutable list, cannot add or remove elements.
+        // List<Integer> al2 = new ArrayList<>(al1); // This will create a mutable copy of the immutable list.
         List<Integer> number = Arrays.asList(2,3,4,5);
         ArrayList<Integer> al3 = new ArrayList<>();
         ArrayList<Integer> al4 = new ArrayList<>();
@@ -48,9 +49,9 @@ public class ArrayListUsage {
 
         // Search
         boolean exists = al.contains(3);
-        int index = al.indexOf(3);
+        int index = al.indexOf(3); // returns -1 if not found
 
-        // Iterate
+        // Iterate -- use this to avoid ConcurrentModificationException
         Iterator<Integer> it = al.iterator();
         if(it.hasNext())
         {
