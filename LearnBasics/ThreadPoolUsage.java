@@ -12,12 +12,14 @@ public class ThreadPoolUsage {
 
         // Submit 10 tasks to the thread pool
         for (int i = 0; i < 10; i++) {
-            executor.submit(new RunnableTsk(i));
+            executor.submit(new RunnableTsk(i)); // submit will queue the task for execution, will return a Future object.
+            // The Future object can be used to check the status of the task or retrieve its result.
         }
 
-        for (int i = 0; i < 10; i++) {  
-            Runnable worker = new RunnableTsk(i+10);  
-            executor.execute(worker);//calling execute method of ExecutorService  
+        for (int i = 0; i < 10; i++) {
+            Runnable worker = new RunnableTsk(i + 100);
+            executor.execute(worker); // calling execute method of ExecutorService, 
+                                      // which is similar to submit but does not return a Future object.
         }
 
         // Shutdown the thread pool after all tasks are complete

@@ -18,7 +18,7 @@ public class ThreadSyncUsage {
         Table1 objt1 = new Table1();//only one object    
         MyThread5 t5=new MyThread5(objt1);    
         MyThread3 t3=new MyThread3(objt1);    
-        t5.start();    
+        t5.start(); // will only schedule the thread, not start it immediately.    
         t3.start();
 /* */        
         Semaphore semaphore = new Semaphore(3); // Creates a Semaphore with 3 permits

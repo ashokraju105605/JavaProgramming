@@ -150,6 +150,7 @@ public class StringsUsage {
         Character ch = 'a';
         System.out.println(Character.toUpperCase(ch));
         System.out.println(Character.valueOf('a'));
+        System.out.println(Character.isDigit(ch)); // checks if the character is a digit
         System.out.println(ch.isDigit(0));
         
         String s = "i.like.this.program.very.much";
@@ -245,12 +246,12 @@ public class StringsUsage {
         should be done by calling its isEmpty() method.
         */
         String[] s = {"ashok","raju"};
-        if(s[0]=="ashok")     // WORKED
+        if(s[0]=="ashok")     // WORKED , but not recommended.
             System.out.println("Comparision worked");
         else
             System.out.println("Comparision using == fails");
 
-        if(s[0].equals("ashok"))  // works.
+        if(s[0].equals("ashok"))  // works. and recommended.
             System.out.println("comparision works");
         else
             System.out.println("comparision failed");

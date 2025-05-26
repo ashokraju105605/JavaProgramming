@@ -16,7 +16,7 @@ public class RandomUsage {
         System.out.println("Using Math.random");
         for( int i=0;i<10;i++)
         {
-            System.out.println((int)(Math.random()*range) + min);
+            System.out.println((int)(Math.random()*range) + min); // looks similar to binary search cutting in half.
         }
 
         System.out.println("Using Random Class");

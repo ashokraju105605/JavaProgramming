@@ -2,8 +2,6 @@ package LearnBasics;
 
 import java.util.*;
 
-import javax.xml.transform.Source;
-
 public class QueueUsage {
     public static void main(String[] args)
     {
@@ -134,6 +132,7 @@ public class QueueUsage {
         Queue<Integer> pq = new PriorityQueue<Integer>(5); // minHeap with size 5.
 
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> maxHeap2 = new PriorityQueue<>(Comparator.reverseOrder()); // Collection.reverseOrder() internally calls Comparator.reverseOrder().
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(); // default is minHeap.
         
         // Returns null if no elements are present.

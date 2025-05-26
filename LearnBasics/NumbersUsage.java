@@ -6,13 +6,17 @@ import java.math.BigInteger;
 public class NumbersUsage {
     public static void main(String[] args) {
         System.out.println("Jai Shree Ram");
+        Integer abc = 5;
         System.out.println(Integer.MIN_VALUE);
         System.out.println(Integer.MAX_VALUE);
         System.out.println(Float.NEGATIVE_INFINITY);
         System.out.println(Float.POSITIVE_INFINITY);
         System.out.println(Long.MIN_VALUE);
         System.out.println(Long.MAX_VALUE);
-        System.out.println(Integer.parseInt("123"));
+        System.out.println(Integer.parseInt("123")); // always parses strings to primitive types.
+        System.out.println(Integer.valueOf("23")); // valueOf converts primitive types to wrapper class objects of corresponding type.
+        System.out.println(Integer.valueOf(25)); // valueOf converts primitive types to wrapper class objects of corresponding type.
+        System.out.println(abc.intValue()); // intValue converts wrapper class object to primitive type.
         System.out.println(Long.parseLong("123"));
         System.out.println(Integer.reverse(32));
         System.out.println(Float.parseFloat("123.23"));
@@ -49,12 +53,12 @@ public class NumbersUsage {
         Float j = 2.22F;
         Double k = 13.3333D;
 
-        Integer abc = null;
+        Integer abcd = null;
 
-        if(abc==null)
-            System.out.println("abc Integer is null");         
+        if(abcd==null)
+            System.out.println("abcd Integer is null");
 
-        
+
 
     }
     public static void NaNTesting()
@@ -62,7 +66,7 @@ public class NumbersUsage {
         System.out.println(0.0 / 0.0);	  //zero divided by zero
         System.out.println(Math.sqrt(-1)); //take sqrt of negative number
         System.out.println(Math.log(8));
-        System.out.println((int)Math.pow(10,9)+7);
+        System.out.println((int)Math.pow(10,9)+7); // 10^9+7 largest prime number that fits in a 32-bit integer.
         System.out.println(10.0 % 0);      //taking mod by zero
         System.out.println(Double.NaN == Double.NaN);
         System.out.println(Double.NaN == Double.POSITIVE_INFINITY);

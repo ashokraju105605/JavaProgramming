@@ -153,13 +153,10 @@ public class HashMapUsage {
         System.out.println(lhm.lastEntry().getKey());
         System.out.println(lhm.remove(lhm.firstEntry().getKey()));
         System.out.println(lhm.firstEntry().getKey());
-        // System.out.println(lhm.firstEntry()); // doesn't exist
-        // System.out.println(lhm.lastEntry()); // doesn't exist
-        
-        
-        
-        
-        
+        System.out.println(lhm.firstEntry());
+
+
+        // TreeMap is a Red-Black tree based implementation of Map interface.
         // Java TreeMap class is a red-black tree based implementation
         // It provides an efficient means of storing key-value pairs in sorted order.
         TreeMap<Integer,String> tm = new TreeMap<Integer,String>();

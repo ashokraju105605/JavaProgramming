@@ -85,7 +85,10 @@ public class ArrayListUsage {
         al.stream().sorted().forEach(System.out::println);
         System.out.println(Arrays.toString(al.toArray()));
         System.out.println(al.isEmpty());
-        List<Integer> square = number.stream().map(x -> x*x).collect(Collectors.toList());
+        List<Integer> square = number.stream().map(x -> x*x).collect(Collectors.toList()); // toList() is generic list usually ArrayList.
+        List<Integer> al2 = number.stream().filter(x -> x > 3).collect(Collectors.toCollection(ArrayList::new)); // toCollection() is used to collect the elements into a linear list of specific collection type.
+        List<Integer> al5 = number.stream().filter(x -> x > 3).collect(Collectors.toCollection(LinkedList::new)); // collecting into a LinkedList
+        Set<Integer> set = number.stream().filter(x -> x > 3).collect(Collectors.toSet()); // toSet() is used to collect the elements into a Set.
         int even = number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
         Collections.sort(al);
         list3.stream().mapToInt(num -> Integer.parseInt(num))
