@@ -82,6 +82,12 @@ public class ArrayListUsage {
         al.sort(Comparator.comparing(Integer::intValue).reversed());
         al.sort(Comparator.reverseOrder());
         al.sort(Collections.reverseOrder()); // both does the same thing. internally calls comparator.reverseOrder()
+        System.out.println(Collections.max(al));
+        System.out.println(Collections.min(al));
+        System.out.println(al.stream().max(Integer::compareTo).orElse(null)); // max using stream
+        System.out.println(al.stream().min(Integer::compareTo).orElse(null)); // min using stream
+        System.out.println(al.stream().mapToInt(Integer::intValue).max().getAsInt()); // max using stream
+        System.out.println(al.stream().mapToInt(Integer::intValue).min().getAsInt()); // min using stream
         al.stream().sorted().forEach(System.out::println);
         System.out.println(Arrays.toString(al.toArray()));
         System.out.println(al.isEmpty());
