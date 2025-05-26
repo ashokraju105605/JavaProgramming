@@ -26,13 +26,13 @@ public class LinkedListUsage {
         //System.out.println(ll.addLast("Finish")); // ADD LAST, Returns void
         System.out.println(ll.toString());
         System.out.println(ll.get(2));
-        System.out.println(ll.getFirst());
+        System.out.println(ll.getFirst()); // same is seen for Sets and Deques.
         System.out.println(ll.getLast());
         System.out.println(ll.indexOf("Raju"));
         System.out.println(ll.isEmpty());
         ll.addFirst("test");
         ll.addLast("temp");
-        System.out.println(ll.offer("Sita")); // add to end of list
+        System.out.println(ll.offer("Sita")); // add to end of list and retrurns true if successful.
         System.out.println(ll.offerFirst("laxman")); // ADD FIRST
         System.out.println(ll.offerLast("bharata")); // ADD LAST, offer and poll are queue methods.
         System.out.println(ll.toString());
