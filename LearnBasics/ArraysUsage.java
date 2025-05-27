@@ -25,6 +25,8 @@ public class ArraysUsage {
         int[] arr2 = arr.clone(); // shallow copy, not deep copy.
         int[] arr3 = new int[5]; // default values are 0 for int, false for boolean, null for object.
         int[][] mat = {{0,0,0},{1,1,1}};
+        List<Integer> list = Arrays.stream(arr1).boxed().collect(Collectors.toList());
+        List<int[]> list2 = Arrays.stream(mat).collect(Collectors.toList()); // converts 2D array to List of int[].
 
         // Init
         Arrays.fill(arr1, -1);
@@ -68,6 +70,8 @@ public class ArraysUsage {
         Arrays.sort(arr5);
         Arrays.sort(arr,0,2);
         List<Integer> arrList = Arrays.stream(arr1).boxed().collect(Collectors.toCollection(ArrayList::new));
+        int[] arr6 = list.stream().mapToInt(Integer::intValue).toArray(); // toArray is not allowed as List<Integer> is a list of Integer objects, not int primitives.
+        int[][] arr8 = list2.toArray(new int[list2.size()][]);//toArray is allowed as List<int[]> is a list of int arrays.
         System.out.println(Arrays.toString(arr));
         int max = Arrays.stream(arr1).max().getAsInt();
         int min = Arrays.stream(arr1).min().getAsInt();
