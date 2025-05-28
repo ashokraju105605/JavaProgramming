@@ -29,6 +29,8 @@ public class ArrayListUsage {
         al4.add(1);al4.add(2); al4.add(3);
         al4.add(0,3); //insert into middle of dynamic array, 
         //all elements till end will be shifted to right, costly operation/depends.
+        al.addFirst(22); // add first element, if exists, otherwise no exception.
+        al.addLast(33); // add last element, if exists, otherwise no exception.
 
         // Read
         Integer element = al.get(1);
@@ -42,6 +44,9 @@ public class ArrayListUsage {
         // non existing element removal will be index out of bounds exception
         //Integer removed = al.remove(al.indexOf(3));
         al.removeIf(x-> (x==3)); // remove all occurrences of 3
+        al.removeLast(); // remove last element, if exists, otherwise no exception.
+        al.clear(); // clear all elements, empty the list.
+        al.removeFirst(); // remove first element, if exists, otherwise no exception.
 
         // Count
         int size = al.size();
