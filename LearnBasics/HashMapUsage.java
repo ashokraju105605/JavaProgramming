@@ -95,9 +95,8 @@ public class HashMapUsage {
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)));
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a)));
-        // no submap on hashmap, only on linkedhashmap and treemap.
+        // no subMap, headMap, tailMap on hashmap, only on linkedhashmap and treemap.
         
-
     }
     public static void main(String[] args)
     {
@@ -141,6 +140,7 @@ public class HashMapUsage {
         System.out.println(hm.toString());
         System.out.println();
         hm.forEach( (key,value) -> System.out.println(key + " ### " + value));
+        hm.clear();
 
 
         // SAME OPERATIONS FOR LINKEDHASHMAP, instead of array it used linkedlist for buckets.
