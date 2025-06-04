@@ -162,7 +162,7 @@ class Counter extends Thread {
     public void run()
     {
  
-        int max = 1_000_00_000;
+        int max = 1_000_00_000; // another way to write 100000000 in Java, using underscores for readability.
         atmInt.getAndSet(2); // set the initial value to 2
  
         // incrementing counter total of max times

@@ -7,7 +7,8 @@ public class InputsReading {
     {
         System.out.println("Jai Shree Ram");
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt(); // Read an integer from the console
+        int t = sc.nextInt(); // Read an integer from the console till a space or newline character is encountered.
+        // Note: nextInt() does not consume the newline character after the integer input, so nextLine() will read the remaining newline.
         int t1 = sc.nextInt();
 
         System.out.println(t);

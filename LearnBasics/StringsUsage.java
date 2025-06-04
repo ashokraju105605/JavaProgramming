@@ -88,7 +88,7 @@ public class StringsUsage {
     }
     public static void StringBuilderUsage()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(); // not thread safe, but faster than StringBuffer.
         sb.append('a');
         sb.append("shok");
         sb.insert(2,"raju");
@@ -135,21 +135,22 @@ public class StringsUsage {
     }
     public static void convertNumtoString()
     {
-        String str = String.valueOf(545);
-        StringBuffer sb = new StringBuffer(str);
+        String str = String.valueOf(545); // return the boxed value of the integer as a string.
+        StringBuffer sb = new StringBuffer(str); // StringBuffer is synchronized, so it is thread safe, but slower than StringBuilder.
         sb.reverse();
         System.out.println(str.equals(""+sb));
 
         StringBuffer sb2 = new StringBuffer("123");
         sb2.reverse();
         System.out.println(sb2.toString());
+
     }
 
     public static void characterUsage()
     {
         Character ch = 'a';
         System.out.println(Character.toUpperCase(ch));
-        System.out.println(Character.valueOf('a'));
+        System.out.println(Character.valueOf('a')); // returns the Character object for the given char.
         System.out.println(Character.isDigit(ch)); // checks if the character is a digit
         System.out.println(ch.isDigit(0));
         
@@ -188,7 +189,7 @@ public class StringsUsage {
             System.out.println(c);
 
         char[] carr = s.toCharArray();
-        int[] arr = new int[128];
+        int[] arr = new int[128]; // ASCII characters range from 0 to 127.
         for(char c : carr)
         {
             arr[c]++;
@@ -205,7 +206,7 @@ public class StringsUsage {
     {
         String s = "ashok";
         char[] carr = s.toCharArray();
-        int[] arr = new int[128];
+        int[] arr = new int[128]; // ASCII characters range from 0 to 127.
         for(char c : carr)
         {
             arr[(int)c]++;
