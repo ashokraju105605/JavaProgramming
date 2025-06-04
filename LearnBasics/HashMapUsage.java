@@ -95,6 +95,7 @@ public class HashMapUsage {
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)));
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a)));
+        // no submap on hashmap, only on linkedhashmap and treemap.
         
 
     }
@@ -154,7 +155,9 @@ public class HashMapUsage {
         System.out.println(lhm.remove(lhm.firstEntry().getKey()));
         System.out.println(lhm.firstEntry().getKey());
         System.out.println(lhm.firstEntry());
-
+        // System.out.println(lhm.subMap(100, 102)); // submap doesn't work on linkedhashmap, only on treemap.
+        // System.out.println(lhm.headMap(101)); // headmap doesn't work on linkedhashmap, only on treemap.
+        // System.out.println(lhm.tailMap(101)); // tailmap doesn't work on linkedhashmap, only on treemap.
 
         // TreeMap is a Red-Black tree based implementation of Map interface.
         // Java TreeMap class is a red-black tree based implementation
@@ -179,6 +182,9 @@ public class HashMapUsage {
         System.out.println(tm.lastKey());
         System.out.println(tm.firstEntry());
         System.out.println(tm.lastEntry());
+        System.out.println(tm.subMap(100, 102)); // submap from key 100 to 102, exclusive of 102.
+        System.out.println(tm.headMap(101)); // headmap from key 100 to 101, exclusive of 101.
+        System.out.println(tm.tailMap(101)); // tailmap from key 101 to end, inclusive of 101.
 
         
     }

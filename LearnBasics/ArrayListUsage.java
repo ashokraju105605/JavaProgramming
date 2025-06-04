@@ -41,7 +41,8 @@ public class ArrayListUsage {
         
         // Delete
         al.remove(5); // all elements till end will be shifted to left, costly operation/depends.
-        // non existing element removal will be index out of bounds exception
+        // non existing element removal will be index out of bounds exceptiony
+        
         //Integer removed = al.remove(al.indexOf(3));
         al.removeIf(x-> (x==3)); // remove all occurrences of 3
         al.removeLast(); // remove last element, if exists, otherwise no exception.

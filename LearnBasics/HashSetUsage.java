@@ -57,6 +57,9 @@ public class HashSetUsage {
             String str = it.next();
             System.out.println(str);
         }
+        // System.out.println(lhs.subSet("raju", "sita")); // doesn't exist in LinkedHashSet, only in TreeSet.
+        // System.out.println(lhs.headSet("ashok")); // doesn't exist in LinkedHashSet, only in TreeSet.
+        // System.out.println(lhs.tailSet("ashok")); // doesn't exist in LinkedHashSet, only in TreeSet.
 
         // TREE SET gives unique advantage that it can provide the floor , ceil, headset, tailset methods due to its sorted order of contents.
         TreeSet<String> sts = new TreeSet<String>(); // if you use SortedSet for the sts type, then you will lose ceiling, floor methods.
