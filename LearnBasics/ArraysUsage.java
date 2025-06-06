@@ -73,12 +73,17 @@ public class ArraysUsage {
         int[] arr6 = list.stream().mapToInt(Integer::intValue).toArray(); // toArray is not allowed as List<Integer> is a list of Integer objects, not int primitives.
         int[][] arr8 = list2.toArray(new int[list2.size()][]);//toArray is allowed as List<int[]> is a list of int arrays.
         System.out.println(Arrays.toString(arr));
-        int max = Arrays.stream(arr1).max().getAsInt();
-        int min = Arrays.stream(arr1).min().getAsInt();
+        int max = Arrays.stream(arr1).max().getAsInt(); // returns max or NoSuchElementException if empty.
+        int min = Arrays.stream(arr1).min().getAsInt(); // returns min or NoSuchElementException if empty.
         int sum = Arrays.stream(arr1).sum();
-        Double avg = Arrays.stream(arr1).average().getAsDouble();
+        Double avg = Arrays.stream(arr1).average().getAsDouble(); // returns average or NoSuchElementException if empty.
         int index = Arrays.binarySearch(arr1,4);
         System.out.println(Arrays.deepToString(dp));
+
+        Set<Integer> uniqueSet = new HashSet<>(Arrays.asList(Arrays.stream(arr).boxed().toArray(Integer[]::new))); // Convert array to Set to remove duplicates
+        Integer[] uniqueArr = uniqueSet.toArray(new Integer[0]); // Convert Set back to Integer array
+        System.out.println(Arrays.toString(uniqueArr)); // print the array using Arrays.toString()
+        // Note: Arrays.toString() is used to print the array, as System.out.println(arr) will not print the array contents.
     }
     public static void main(String[] args) {
         System.out.println("Jai Shree Ram");

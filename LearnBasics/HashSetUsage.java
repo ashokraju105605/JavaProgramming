@@ -31,7 +31,8 @@ public class HashSetUsage {
         System.out.println(); 
 
         
-        
+        // if you just want to retrieve any first element from the set, you can use iterator.
+        System.out.println(hs.iterator().next()); // returns any one element from the set, as it is unordered.
         
         
         // LINKED HASH SET has same interface methods as hash set , only diff is it used linked list rather than arraylist.

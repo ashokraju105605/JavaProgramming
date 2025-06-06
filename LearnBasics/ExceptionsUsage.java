@@ -35,4 +35,20 @@ public class ExceptionsUsage {
             e.printStackTrace();
         }
     }
+
+    void validateAge(int age) throws IllegalArgumentException {
+        if (age < 18) throw new IllegalArgumentException("Age must be 18 or above.");
+    }
+
+    class InvalidInputException extends Exception {
+        public InvalidInputException(String message) {
+            super(message);
+        }
+    }
+
+    void validate(int value) throws InvalidInputException {
+        if (value < 0) throw new InvalidInputException("Negative values not allowed!");
+    }
+
+    // Try-With-Resources (Auto Closing)
 }

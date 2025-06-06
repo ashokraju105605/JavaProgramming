@@ -12,6 +12,7 @@ public class ArrayListUsage {
     public static void usage(){
         // Create
         List<Integer> al = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)); // Create and initialize with values.
         List<Integer> al1 = Arrays.asList(-9, -18, 0, 25, 4); // Immutable list, cannot add or remove elements.
         // List<Integer> al2 = new ArrayList<>(al1); // This will create a mutable copy of the immutable list.
         List<Integer> number = Arrays.asList(2,3,4,5);
@@ -29,8 +30,8 @@ public class ArrayListUsage {
         al4.add(1);al4.add(2); al4.add(3);
         al4.add(0,3); //insert into middle of dynamic array, 
         //all elements till end will be shifted to right, costly operation/depends.
-        al.addFirst(22); // add first element, if exists, otherwise no exception.
-        al.addLast(33); // add last element, if exists, otherwise no exception.
+        al.addFirst(22); // add first element, used for Deque operations
+        al.addLast(33); // add last element, used for Deque operations
 
         // Read
         Integer element = al.get(1);
@@ -45,9 +46,9 @@ public class ArrayListUsage {
         
         //Integer removed = al.remove(al.indexOf(3));
         al.removeIf(x-> (x==3)); // remove all occurrences of 3
-        al.removeLast(); // remove last element, if exists, otherwise no exception.
+        al.removeLast(); // remove last element, helps with Deque operations.
+        al.removeFirst(); // remove first element, helps with Deque operations.
         al.clear(); // clear all elements, empty the list.
-        al.removeFirst(); // remove first element, if exists, otherwise no exception.
 
         // Count
         int size = al.size();
@@ -86,10 +87,11 @@ public class ArrayListUsage {
         // Specifics
         al.sort(null);
         al.sort(Comparator.comparing(Integer::intValue).reversed());
-        al.sort(Comparator.reverseOrder());
+        al.sort(Comparator.naturalOrder()); // sorts in ascending order
+        al.sort(Comparator.reverseOrder()); // sorts in descending order
         al.sort(Collections.reverseOrder()); // both does the same thing. internally calls comparator.reverseOrder()
-        System.out.println(Collections.max(al));
-        System.out.println(Collections.min(al));
+        System.out.println(Collections.max(al)); // max value of arraylist or NoSuchElementException if empty
+        System.out.println(Collections.min(al)); // min value of arraylist or NoSuchElementException if empty
         System.out.println(al.stream().max(Integer::compareTo).orElse(null)); // max using stream
         System.out.println(al.stream().min(Integer::compareTo).orElse(null)); // min using stream
         System.out.println(al.stream().mapToInt(Integer::intValue).max().getAsInt()); // max using stream
@@ -102,7 +104,11 @@ public class ArrayListUsage {
         List<Integer> al5 = number.stream().filter(x -> x > 3).collect(Collectors.toCollection(LinkedList::new)); // collecting into a LinkedList
         Set<Integer> set = number.stream().filter(x -> x > 3).collect(Collectors.toSet()); // toSet() is used to collect the elements into a Set.
         int even = number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
-        Collections.sort(al);
+        Collections.sort(al); // sorting the list in ascending order.
+        Collections.reverse(al); // reversing the list.
+        Integer[] array = numbers.toArray(new Integer[0]); // converting list to array.
+        Set<Integer> uniqueSet = new HashSet<>(numbers); // converting list to set to remove duplicates.
+        numbers = new ArrayList<>(uniqueSet); // removing the duplicates using set and converting back to list.
         list3.stream().mapToInt(num -> Integer.parseInt(num))
         .filter(num -> num % 3 == 0)
         .forEach(System.out::println);
