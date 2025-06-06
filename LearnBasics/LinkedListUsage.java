@@ -44,7 +44,7 @@ public class LinkedListUsage {
         System.out.println(ll.pollFirst()); // REMOVE FIRST
         System.out.println(ll.pollLast());  // REMOVE LAST
         System.out.println(ll.removeFirst()); // REMOVE FIRST, throws NoSuchElementException exception if empty.
-        System.out.println(ll.removeLast());  // REMOVE LAST
+        System.out.println(ll.removeLast());  // REMOVE LAST, throws NoSuchElementException exception if empty.
         System.out.println(ll.toString());
         System.out.println(ll.size());
 

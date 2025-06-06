@@ -1,5 +1,7 @@
 package LearnBasics;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class ExceptionsUsage {
@@ -50,5 +52,28 @@ public class ExceptionsUsage {
         if (value < 0) throw new InvalidInputException("Negative values not allowed!");
     }
 
-    // Try-With-Resources (Auto Closing)
+    void test1(){
+        // Try-With-Resources (Auto Closing)
+        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+            System.out.println(br.readLine());
+        } catch (IOException e) {
+            System.out.println("File error!");
+        }
+    }
+
+    // ✔ Checked Exceptions(enforced at compile time) (IOException, SQLException) → Must be handled (throws or try-catch). 
+    // ✔ Occur during compile-time, meaning the program won’t compile unless handled. 
+    // ✔ Typically used when failures are expected and need recovery (e.g., file operations, networking).
+
+    void riskyOperation() throws IOException { // ✅ Checked exception
+        throw new IOException("File not found!");
+    }
+    // ✔ Unchecked Exceptions (NullPointerException, ArithmeticException) → Runtime errors not enforced by the compiler.
+    // ✔ Do not require explicit handling, but can be caught if needed. 
+    // ✔ Occur during runtime, meaning the compiler won’t force handling. 
+    // ✔ Typically caused by programming errors (e.g., null references, division by zero).
+    void riskyOperationUnchecked() { // ❌ Unchecked exception
+        throw new RuntimeException("Runtime error occurred!");
+    }
+
 }

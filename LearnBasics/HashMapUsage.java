@@ -96,7 +96,18 @@ public class HashMapUsage {
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)));
         System.out.println(hm1.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a)));
         // no subMap, headMap, tailMap on hashmap, only on linkedhashmap and treemap.
-        
+
+        Map<Integer, String> cache = new LinkedHashMap<>(5, 0.75f, true);
+        cache.put(1, "Data1");
+        cache.put(2, "Data2");
+
+        System.out.println(cache); // ✅ Maintains insertion order and tracks access for eviction policies.
+        // LinkedHashMap is useful for maintaining insertion order and can be used as LRU Cache.
+        // TreeMap is useful for maintaining sorted order of keys.
+
+        // if there are collision in hashmap, it will use linkedlist to store the values in the bucket.
+        // if the number of elements in the bucket exceeds a certain threshold 8, it will convert the linkedlist to a red black tree.
+        // This is done to improve the performance of the hashmap, as linkedlist has O(n) time complexity for search, while red black tree has O(log n) time complexity.
     }
     public static void main(String[] args)
     {
