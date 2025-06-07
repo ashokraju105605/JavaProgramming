@@ -19,6 +19,7 @@ public class HashMapUsage {
         hm1.put(101,"Ammit"); // will trample of the existing key, if you don't want to do it, use putIfAbsent
         hm1.put(102, "Vijay");
         hm1.put(103, "Rahul");
+        hm1.putIfAbsent(101, "Amit"); // will not trample the existing key, if key already exists, it will not update the value.
 
         // Read
         System.out.println(hm1.get(1));
@@ -64,7 +65,7 @@ public class HashMapUsage {
         System.out.println(hm1.isEmpty());
         
         // Search
-        System.out.println(hm1.containsKey(1));
+        System.out.println(hm1.containsKey(1)); // don't use contains() as it is not available in hashmap, use containsKey() or containsValue().
         System.out.println(hm1.containsValue("Amit"));
 
         // Iterate

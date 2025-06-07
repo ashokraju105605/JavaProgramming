@@ -8,7 +8,7 @@ public class HashSetUsage {
     {
         System.out.println("Jai Shree Ram");
         HashSet<String> hs = new HashSet<String>();
-        hs.add("Ashok");
+        hs.add("Ashok"); // returns true if added successfully and not already present, false if not.
         hs.add("Raju");
         hs.add("Gadhiraju");
         System.out.println(hs.add("Ananya"));

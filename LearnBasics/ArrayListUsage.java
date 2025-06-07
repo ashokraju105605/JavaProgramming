@@ -24,7 +24,7 @@ public class ArrayListUsage {
         // Java generics (<>) only accept reference types, meaning List<int> is invalid.
 
         // Init
-        al.add(3);
+        al.add(3); // returns true if added successfully, false if not.
         al.addAll(al1);
         al3.add(1);al3.add(2); al3.add(3);
         al4.add(1);al4.add(2); al4.add(3);
@@ -34,7 +34,7 @@ public class ArrayListUsage {
         al.addLast(33); // add last element, used for Deque operations
 
         // Read
-        Integer element = al.get(1);
+        Integer element = al.get(1); // get element at index 1, IndexOutOfBoundsException if index is out of range.
         //al.getOrDefault(5, 0); -- doesn't exist
 
         // Update
