@@ -46,8 +46,8 @@ public class ArrayListUsage {
         
         //Integer removed = al.remove(al.indexOf(3));
         al.removeIf(x-> (x==3)); // remove all occurrences of 3
-        al.removeLast(); // remove last element, helps with Deque operations.
-        al.removeFirst(); // remove first element, helps with Deque operations.
+        al.removeLast(); // remove last element NoSuchElementException if empty, helps with Deque operations.
+        al.removeFirst(); // remove first element NoSuchElementException if empty, helps with Deque operations.
         al.clear(); // clear all elements, empty the list.
 
         // Count
@@ -104,7 +104,7 @@ public class ArrayListUsage {
         List<Integer> al5 = number.stream().filter(x -> x > 3).collect(Collectors.toCollection(LinkedList::new)); // collecting into a LinkedList
         Set<Integer> set = number.stream().filter(x -> x > 3).collect(Collectors.toSet()); // toSet() is used to collect the elements into a Set.
         int even = number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
-        Collections.sort(al); // sorting the list in ascending order.
+        Collections.sort(al, Comparator.naturalOrder()); // sorting the list in ascending order.
         Collections.reverse(al); // reversing the list.
         Integer[] array = numbers.toArray(new Integer[0]); // converting list to array.
         Set<Integer> uniqueSet = new HashSet<>(numbers); // converting list to set to remove duplicates.

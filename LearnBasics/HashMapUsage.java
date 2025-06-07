@@ -52,7 +52,8 @@ public class HashMapUsage {
         System.out.println(hm1.get(104));
         
         // Delete
-        hm1.remove(104);
+        hm1.remove(104); // returns the value associated with the key, if key doesn't exist, returns null.
+        hm1.remove(103, "ashok"); // removes the key only if the value is "ashok", returns true if removed, false if not.
         System.out.println(hm1.get(104));
         
         // Count
@@ -98,6 +99,9 @@ public class HashMapUsage {
         // no subMap, headMap, tailMap on hashmap, only on linkedhashmap and treemap.
 
         Map<Integer, String> cache = new LinkedHashMap<>(5, 0.75f, true);
+        // initial capacity is 5, load factor is 0.75, access order is true (LRU Cache).
+        // The load factor is a measure of how full the hash table is allowed to get before its capacity is automatically increased.
+        // This means that the cache will maintain the order of access, and the least recently used entry will be removed when the cache exceeds its capacity.
         cache.put(1, "Data1");
         cache.put(2, "Data2");
 

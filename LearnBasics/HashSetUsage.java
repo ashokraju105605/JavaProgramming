@@ -36,8 +36,8 @@ public class HashSetUsage {
         
         
         // LINKED HASH SET has same interface methods as hash set , only diff is it used linked list rather than arraylist.
-        // HashSet does not provide any method to maintain the insertion order. Comparatively, LinkedHashSet maintains the insertion order 
-        // of the elements.
+        // HashSet does not provide any method to maintain the insertion order. Comparatively, 
+        // LinkedHashSet maintains the insertion order of the elements.
         LinkedHashSet<String> lhs = new LinkedHashSet<String>();
         lhs.add("Ashok");
         lhs.add("Raju");
@@ -47,6 +47,7 @@ public class HashSetUsage {
 
         System.out.println(lhs.getFirst());
         System.out.println(lhs.getLast());
+        // headSet, tailSet, subSet methods are not available in LinkedHashSet, only in TreeSet.
 
         System.out.println(lhs.remove("rama"));
 

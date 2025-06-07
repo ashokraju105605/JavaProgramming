@@ -110,6 +110,7 @@ public class NumbersUsage {
         System.out.println(Integer.toString(23));
         System.out.println(Integer.compare(2,3));
         System.out.println(Integer.compare(3,3));
+        System.out.println(intObj.compareTo(2));
         System.out.println(Integer.signum(-300));
 
         System.out.println(Double.isNaN(0));

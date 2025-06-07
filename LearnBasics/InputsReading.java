@@ -14,7 +14,7 @@ public class InputsReading {
         System.out.println(t);
         System.out.println(t1);
 
-        String s = sc.nextLine(); // Read a string from the console (this will read the newline character left by nextInt)
+        String s = sc.nextLine(); // Read a string from the console (this will read the newline character left by previous nextInt)
         System.out.println(s);
         
         String s1 = sc.nextLine(); // Read another string from the console

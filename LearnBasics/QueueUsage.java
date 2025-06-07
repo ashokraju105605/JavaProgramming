@@ -6,12 +6,13 @@ public class QueueUsage {
     public static void main(String[] args)
     {
         System.out.println("Jai Shree Ram");
-        // Queue is just an interface, PriotiryQueue is an implementation.
-        Queue<String> pq = new PriorityQueue<String>();
-        pq.add("ashok");
-        pq.add("raju");
-        pq.add("ananya");
-        pq.offer("test");
+        // Queue is just an interface, PriorityQueue is an implementation.
+        Queue<String> pq = new PriorityQueue<String>(Comparator.naturalOrder()); // minHeap by default.
+        // PriorityQueue is an unbounded queue that orders its elements according to their natural ordering or by a Comparator provided at queue construction time.
+        pq.add("ashok"); // add() will throw exception if queue is full.
+        pq.add("raju"); // add() will return true if added successfully according to queue implementation.
+        pq.add("ananya"); // add() will insert element without violating the capacity of the queue.
+        pq.offer("test"); // return true if added successfully without violating the capacity of the queue.
 
         System.out.println(pq);
 
@@ -27,11 +28,11 @@ public class QueueUsage {
             System.out.println(temp);
         }
 
-        System.out.println(pq.peek()); // returns the head of the queue, throws exception if empty.
-        System.out.println(pq.remove()); // returns the head of the queue, throws exception if empty.
+        System.out.println(pq.peek()); // returns the head of the queue, return null if empty.
+        System.out.println(pq.remove()); // returns the head of the queue, throws NoSuchElementException if empty.
         System.out.println(pq.poll()); // poll() will return null if queue is empty.
-        System.out.println(pq.element()); // returns the head of the queue, throws exception if empty.
-        System.out.println(pq.offer("rama")); // returns true if added successfully at the end of the queue.
+        System.out.println(pq.element()); // returns the head of the queue, throws NoSuchElementException if empty.
+        System.out.println(pq.offer("rama")); // returns true if added successfully according to queue implementation.
         System.out.println(pq.isEmpty());
         System.out.println(pq);
 

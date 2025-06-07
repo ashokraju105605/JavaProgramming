@@ -88,7 +88,7 @@ public class StringsUsage {
     }
     public static void StringBuilderUsage()
     {
-        StringBuilder sb = new StringBuilder(); // not thread safe, but faster than StringBuffer.
+        StringBuilder sb = new StringBuilder(); // not thread safe, but faster than StringBuffer. both have same methods.
         sb.append('a');
         sb.append("shok");
         sb.insert(2,"raju");
